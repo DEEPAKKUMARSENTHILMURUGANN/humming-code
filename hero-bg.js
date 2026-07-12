@@ -1,36 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('hero-canvas');
+    // ========================
+    // HERO CANVAS PARTICLES
+    // ========================
+    initParticleCanvas('hero-canvas', {
+        primaryColor: 'rgba(255, 255, 255, 0.4)',
+        accentColor: 'rgba(255, 60, 60, 0.8)',
+        accentChance: 0.85,
+        lineColor: 'rgba(255, 255, 255, 0.15)',
+        scrollAwareY: true
+    });
+
+    // ========================
+    // FACTORY CANVAS PARTICLES
+    // ========================
+    window.initFactoryParticles = function() {
+        const existing = window._factoryParticleLoop;
+        if (existing) return;
+        initParticleCanvas('factory-canvas', {
+            primaryColor: 'rgba(255, 255, 255, 0.25)',
+            accentColor: 'rgba(255, 60, 60, 0.7)',
+            accentChance: 0.75, // 25% are red
+            lineColor: 'rgba(255, 60, 60, 0.08)',
+            scrollAwareY: false,
+            isFactory: true
+        });
+    };
+});
+
+function initParticleCanvas(canvasId, opts) {
+    const canvas = document.getElementById(canvasId);
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
-    
-    // Set canvas to full window size initially
     let width, height;
+
     function resize() {
-        // Find the .hero section height
-        const heroSection = document.querySelector('.hero');
-        width = window.innerWidth;
-        height = heroSection ? heroSection.offsetHeight : window.innerHeight;
+        const container = canvas.parentElement;
+        width = container ? container.clientWidth || window.innerWidth : window.innerWidth;
+        height = container ? container.clientHeight || window.innerHeight : window.innerHeight;
+        // Fallback for hidden containers
+        if (height < 10) height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
     }
-    
+
     window.addEventListener('resize', resize);
     resize();
 
     // Mouse tracking
-    const mouse = {
-        x: null,
-        y: null,
-        radius: 150 // Area of effect
-    };
+    const mouse = { x: null, y: null, radius: 150 };
 
     window.addEventListener('mousemove', (event) => {
-        mouse.x = event.x;
-        // Adjust for scroll since canvas is absolute to the hero section, not fixed to screen
-        mouse.y = event.y + window.scrollY;
+        mouse.x = event.clientX;
+        mouse.y = opts.scrollAwareY ? event.clientY + window.scrollY : event.clientY;
     });
-
     window.addEventListener('mouseout', () => {
         mouse.x = undefined;
         mouse.y = undefined;
@@ -38,89 +61,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Particle {
         constructor() {
+            this.reset();
+        }
+        reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            // Velocity
-            this.vx = (Math.random() - 0.5) * 1.5;
-            this.vy = (Math.random() - 0.5) * 1.5;
-            
-            // Randomly choose color: mostly white/grey, some red
-            const isRed = Math.random() > 0.85;
-            this.color = isRed ? 'rgba(255, 60, 60, 0.8)' : 'rgba(255, 255, 255, 0.4)';
-            this.size = Math.random() * 2 + 1;
-            
-            // Base positions for repulsion return
-            this.baseX = this.x;
-            this.baseY = this.y;
+            this.vx = (Math.random() - 0.5) * 1.2;
+            this.vy = (Math.random() - 0.5) * 1.2;
+            this.size = Math.random() * 2 + 0.5;
+            const isAccent = Math.random() > opts.accentChance;
+            this.color = isAccent ? opts.accentColor : opts.primaryColor;
         }
-
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
             ctx.fill();
         }
-
         update() {
-            // Movement
             this.x += this.vx;
             this.y += this.vy;
-
-            // Bounce off edges
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
 
-            // Mouse repulsion
             if (mouse.x !== undefined && mouse.y !== undefined) {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < mouse.radius) {
-                    // Push away
-                    const forceDirectionX = dx / distance;
-                    const forceDirectionY = dy / distance;
-                    
-                    // The closer the mouse, the stronger the push
-                    const force = (mouse.radius - distance) / mouse.radius;
-                    
-                    // Apply force (repulsion)
-                    this.x -= forceDirectionX * force * 5;
-                    this.y -= forceDirectionY * force * 5;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouse.radius) {
+                    const fx = dx / dist;
+                    const fy = dy / dist;
+                    const force = (mouse.radius - dist) / mouse.radius;
+                    this.x -= fx * force * 5;
+                    this.y -= fy * force * 5;
                 }
             }
         }
     }
 
-    // Initialize particles
+    const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 12000);
     const particles = [];
-    const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 15000); // Responsive count
-    
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
-    // Animation loop
+    let animId;
     function animate() {
-        requestAnimationFrame(animate);
+        animId = requestAnimationFrame(animate);
         ctx.clearRect(0, 0, width, height);
-
         for (let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
-
-            // Draw connecting lines
-            for (let j = i; j < particles.length; j++) {
+            for (let j = i + 1; j < particles.length; j++) {
                 let dx = particles[i].x - particles[j].x;
                 let dy = particles[i].y - particles[j].y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 120) {
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
                     ctx.beginPath();
-                    // Line opacity based on distance
-                    const opacity = 1 - (distance / 120);
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.15})`;
-                    ctx.lineWidth = 1;
+                    const opacity = 1 - dist / 120;
+                    ctx.strokeStyle = opts.lineColor.replace('0.1', `${opacity * 0.15}`).replace('0.15', `${opacity * 0.15}`);
+                    ctx.lineWidth = 0.8;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     ctx.stroke();
@@ -129,6 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Start animation
     animate();
-});
+
+    // Store reference for factory canvas so we can resize it on demand
+    if (opts.isFactory) {
+        window._factoryResizer = resize;
+        window._factoryParticleLoop = animId;
+    }
+}

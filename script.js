@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     // Force clear any stuck overflow from intro
     document.body.style.overflow = '';
@@ -668,64 +668,11 @@ function handleCertClick(element, imgSrc, transform) {
     }
 }
 
-// ==========================================
-// RESUME MACHINE ANIMATION
-// ==========================================
-window.startResumeAnimation = function() {
-    const machineCore = document.getElementById('machine-core');
-    const machineStatus = document.getElementById('machine-status');
-    const finalResumeBtn = document.getElementById('final-resume-btn');
-    const dataNodes = document.querySelectorAll('.data-node');
-
-    if (window.isProcessingResume) return;
-    
-    window.isProcessingResume = true;
-    
-    // Reset states
-    machineCore.classList.remove('processing', 'finished');
-    finalResumeBtn.classList.add('hidden');
-    dataNodes.forEach(n => n.classList.remove('spawned', 'absorbed'));
-    machineStatus.innerText = "INITIALIZING SYSTEM...";
-    
-    // Step 1: Spawn nodes
-    setTimeout(() => {
-        machineStatus.innerText = "GATHERING DATA...";
-        dataNodes.forEach((node, idx) => {
-            setTimeout(() => {
-                node.classList.add('spawned');
-            }, idx * 300);
-        });
-    }, 500);
-
-    // Step 2: Absorb nodes into machine
-    setTimeout(() => {
-        machineStatus.innerText = "PROCESSING EXPERIENCE...";
-        machineCore.classList.add('processing');
-        
-        dataNodes.forEach((node, idx) => {
-            setTimeout(() => {
-                node.classList.add('absorbed');
-            }, idx * 200);
-        });
-    }, 3000);
-
-    // Step 3: Finish and Output Resume
-    setTimeout(() => {
-        machineStatus.innerText = "RESUME COMPILED SUCCESSFULLY.";
-        machineCore.classList.remove('processing');
-        machineCore.classList.add('finished');
-        
-        // Show final button
-        setTimeout(() => {
-            finalResumeBtn.classList.remove('hidden');
-            window.isProcessingResume = false;
-        }, 500);
-    }, 6500);
-};
+// startResumeAnimation + closeResumeMachine are now defined in neural-resume.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('build-resume-btn');
-    if (btn) btn.addEventListener('click', window.startResumeAnimation);
+    if (btn) btn.addEventListener('click', window.startVortexAnimation);
 
     // Mobile Hamburger Menu Logic
     const hamburger = document.getElementById('hamburger');

@@ -92,7 +92,7 @@
                         </svg>
                     </span>
                 </a>
-                <button id="build-resume-btn" class="pink-pill-btn resume-btn" onclick="startResumeAnimation()">
+                <button id="build-resume-btn" class="pink-pill-btn resume-btn" onclick="window.startVortexAnimation()">
                     RESUME
                 </button>
             </div>
@@ -1052,6 +1052,7 @@
     <script src="pub-bg.js"></script>
     <script src="contact-bg.js"></script>
     <script src="hero-bg.js"></script>
+    <script src="vortex-resume.js"></script>
     <script>
     function handleContactSubmit() {
         const name = document.getElementById('contact-name').value.trim();
@@ -1078,5 +1079,164 @@
         }, 2500);
     }
     </script>
+
+    <!-- ================= RESUME MACHINE OVERLAY ================= -->
+    <div id="resume-machine-overlay" class="hidden">
+        <div class="rm-close-btn" onclick="closeResumeMachine()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </div>
+        
+        <h2 id="machine-status">INITIALIZING SYSTEM...</h2>
+
+        <div class="rm-scene">
+            <!-- The Machine Core -->
+            <div id="machine-core">
+                <div class="core-inner"></div>
+                <div class="core-rings">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                </div>
+            </div>
+
+            <!-- Data Nodes (Objects) -->
+            <div class="data-node node-info" data-label="Personal Info">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            
+            <div class="data-node node-achievements" data-label="Achievements">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2"><path d="M12 15l-3 3h6l-3-3z"></path><path d="M12 15V3"></path><path d="M8 3h8"></path><path d="M6 5v4a6 6 0 0 0 12 0V5"></path><path d="M3 5h3"></path><path d="M18 5h3"></path></svg>
+            </div>
+
+            <div class="data-node node-experience" data-label="Experience">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+
+            <div class="data-node node-certifications" data-label="Certifications">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+
+            <div class="data-node node-projects" data-label="Projects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+
+            <!-- Final Output PDF -->
+            <a id="final-resume-btn" class="hidden" href="Deepakkumar_Resume.pdf" target="_blank">
+                <div class="pdf-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <span>DOWNLOAD PDF</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ================= HOLOGRAPHIC RESUME FACTORY ================= -->
+    <div id="holographic-factory-overlay" class="hidden">
+        <canvas id="factory-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.3;"></canvas>
+        <div class="rm-close-btn" onclick="closeResumeMachine()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </div>
+        
+        <h2 id="factory-status">SYSTEM STANDBY</h2>
+
+        <div class="factory-scene">
+            <div class="holo-grid"></div>
+            
+            <div class="conveyor-belt"></div>
+
+            <!-- The Compiler Engine -->
+            <div id="compiler-engine">
+                <div class="engine-body"></div>
+                <div class="engine-laser-scanner"></div>
+                <div class="engine-glow"></div>
+            </div>
+
+            <!-- Data Chips -->
+            <div class="data-chip chip-info" data-label="Personal Info">
+                <div class="chip-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ff3c3c" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+            </div>
+            
+            <div class="data-chip chip-achievements" data-label="Achievements">
+                <div class="chip-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ff8c42" stroke-width="2"><path d="M12 15l-3 3h6l-3-3z"></path><path d="M12 15V3"></path><path d="M8 3h8"></path><path d="M6 5v4a6 6 0 0 0 12 0V5"></path><path d="M3 5h3"></path><path d="M18 5h3"></path></svg>
+                </div>
+            </div>
+
+            <div class="data-chip chip-experience" data-label="Experience">
+                <div class="chip-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                </div>
+            </div>
+
+            <div class="data-chip chip-certifications" data-label="Certifications">
+                <div class="chip-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ff5c7a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+            </div>
+
+            <div class="data-chip chip-projects" data-label="Projects">
+                <div class="chip-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ffb3b3" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+            </div>
+
+            <!-- 3D Printed Final Output PDF -->
+            <a id="printed-resume-btn" class="hidden" href="Deepakkumar_Resume.pdf" target="_blank">
+                <div class="printed-pdf">
+                    <!-- Holographic shimmer corners -->
+                    <div class="holo-corner tl"></div>
+                    <div class="holo-corner tr"></div>
+                    <div class="holo-corner bl"></div>
+                    <div class="holo-corner br"></div>
+                    <!-- PDF Document SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" fill="none">
+                        <rect x="2" y="2" width="60" height="76" rx="4" stroke="#ff3c3c" stroke-width="2" fill="rgba(255,60,60,0.05)"/>
+                        <path d="M42 2 L42 18 L58 18" stroke="#ff3c3c" stroke-width="2" fill="none"/>
+                        <path d="M42 2 L58 18" stroke="#ff3c3c" stroke-width="2"/>
+                        <!-- Lines of text -->
+                        <line x1="12" y1="30" x2="52" y2="30" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+                        <line x1="12" y1="40" x2="52" y2="40" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="12" y1="50" x2="52" y2="50" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="12" y1="60" x2="35" y2="60" stroke="#ff3c3c" stroke-width="1.5" opacity="0.5"/>
+                    </svg>
+                    <div class="pdf-label">PDF</div>
+                    <div class="pdf-scanline"></div>
+                </div>
+                <span>ACCESS RESUME</span>
+            </a>
+        </div>
+    </div>
+
+
+    
+    <!-- ================= VORTEX RESUME COMPILER ================= -->
+    <div id="vortex-overlay" class="hidden">
+        <button class="vortex-close" onclick="window.closeVortex()">✕</button>
+        <div id="vortex-status-container">
+            <div id="vortex-progress">0%</div>
+            <div id="vortex-status">SYSTEM STANDBY</div>
+        </div>
+
+        <canvas id="vortex-canvas"></canvas>
+
+        <a id="vortex-output-btn" class="hidden" href="Deepakkumar_Resume.pdf" target="_blank">
+            <div class="vortex-pdf-card">
+                <div class="vortex-pdf-glow"></div>
+                <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="60" height="76" rx="5" stroke="#ff3c3c" stroke-width="2.5" fill="rgba(255,60,60,0.06)"/>
+                    <path d="M42 2 L42 20 L60 20" stroke="#ff3c3c" stroke-width="2.5" fill="none"/>
+                    <path d="M42 2 L60 20" stroke="#ff3c3c" stroke-width="2" opacity="0.5"/>
+                    <line x1="10" y1="32" x2="54" y2="32" stroke="#fff" stroke-width="2" opacity="0.9"/>
+                    <line x1="10" y1="42" x2="54" y2="42" stroke="#fff" stroke-width="2" opacity="0.7"/>
+                    <line x1="10" y1="52" x2="54" y2="52" stroke="#fff" stroke-width="2" opacity="0.5"/>
+                    <line x1="10" y1="62" x2="36" y2="62" stroke="#ff3c3c" stroke-width="2" opacity="0.7"/>
+                </svg>
+            </div>
+            <span class="vortex-btn-label">DOWNLOAD RESUME</span>
+        </a>
+    </div>
+
 </body>
-</html>
