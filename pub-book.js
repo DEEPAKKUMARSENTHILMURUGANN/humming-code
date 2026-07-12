@@ -2,22 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const bookFloat  = document.getElementById('book-float');
-    const bookCover  = document.getElementById('book-cover');
-    const bookInside = bookFloat ? bookFloat.querySelector('.book-inside') : null;
-
-    if (!bookFloat || !bookCover) return;
+    if (!bookFloat) return;
 
     // ── State ──────────────────────────────────────────────────────────
-    let isOpen      = false;
-    let isAnimating = false;
     let isHovered   = false;
     let floatTime   = 0;
 
     // Base resting 3D orientation
     const BASE_RX = 15, BASE_RY = -25, BASE_RZ = 5;
-
-    // Duration must match CSS transition on .book-cover (1000ms)
-    const FLIP_DURATION = 1050;
 
     // ── Helpers ────────────────────────────────────────────────────────
     function setTransform(rx, ry, rz, ty = 0, scale = 1) {
@@ -40,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scene = document.getElementById('book-scene');
     if (scene) {
         scene.addEventListener('mousemove', (e) => {
-            if (isAnimating || prefersReducedMotion) return;
+            if (prefersReducedMotion) return;
             isHovered = true;
 
             const rect = scene.getBoundingClientRect();
@@ -59,107 +51,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── 3. Open Book ───────────────────────────────────────────────────
-    function openBook() {
-        if (isOpen || isAnimating) return;
-        isAnimating = true;
-
-        bookCover.classList.add('open');
-        bookFloat.classList.add('book-is-open');
-        isOpen = true;
-
-        setTimeout(() => { isAnimating = false; }, FLIP_DURATION);
+    // ── 3. Page Flipping Logic ─────────────────────────────────────────
+    window.flipPage = function(pageNumber, event) {
+        if (event) event.stopPropagation();
+        const page = document.getElementById(`page-${pageNumber}`);
+        if (page) {
+            page.classList.add('flipped');
+            // Change z-index halfway through the animation (1000ms total) to prevent clipping
+            setTimeout(() => {
+                page.style.zIndex = pageNumber;
+                if (pageNumber === 1) {
+                    bookFloat.classList.add('book-is-open');
+                    const tapText = document.getElementById('tap-to-open-text');
+                    if(tapText) tapText.style.opacity = '0';
+                }
+            }, 300); // 300ms is when it crosses the 90 degree mark roughly
+        }
     }
 
-    // ── 4. Close Book ──────────────────────────────────────────────────
-    function closeBook() {
-        if (!isOpen || isAnimating) return;
-        isAnimating = true;
-
-        bookCover.classList.remove('open');
-        bookFloat.classList.remove('book-is-open');
-        isOpen = false;
-
-        setTimeout(() => { isAnimating = false; }, FLIP_DURATION);
+    window.unflipPage = function(pageNumber, event) {
+        if (event) event.stopPropagation();
+        const page = document.getElementById(`page-${pageNumber}`);
+        if (page) {
+            page.classList.remove('flipped');
+            setTimeout(() => {
+                page.style.zIndex = 5 - pageNumber; // Reset back to initial stacking (4 pages total)
+                if (pageNumber === 1) {
+                    bookFloat.classList.remove('book-is-open');
+                    const tapText = document.getElementById('tap-to-open-text');
+                    if(tapText) tapText.style.opacity = '1';
+                }
+            }, 300);
+        }
     }
 
-    // ── 5. Click Targets ───────────────────────────────────────────────
-    // Clicking the cover (front face) when closed → OPEN
-    bookCover.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (!isOpen) openBook();
-        // If already open, a click on the flipped cover back-face should also close
-        else closeBook();
-    });
-
-    // Clicking the inside page when open → CLOSE
-    if (bookInside) {
-        bookInside.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (isOpen) closeBook();
-        });
-    }
-
-    // Keyboard accessibility
-    bookFloat.setAttribute('tabindex', '0');
-    bookFloat.setAttribute('role', 'button');
-    bookFloat.setAttribute('aria-label', 'Open book');
-    bookFloat.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            if (!isOpen) { openBook(); bookFloat.setAttribute('aria-label', 'Close book'); }
-            else         { closeBook(); bookFloat.setAttribute('aria-label', 'Open book'); }
+    // Optionally allow closing the whole book by clicking outside the pages
+    scene.addEventListener('click', (e) => {
+        // If they click the scene background, unflip everything
+        if (e.target === scene) {
+            for (let i = 4; i >= 1; i--) {
+                window.unflipPage(i);
+            }
         }
     });
-
-    // ── 6. Inside Book Pagination ──────────────────────────────────────
-    const bpTrack = document.getElementById('bp-track');
-    const bpPrev = document.getElementById('bp-prev');
-    const bpNext = document.getElementById('bp-next');
-    const bpDots = document.querySelectorAll('.bp-dot');
-    
-    let currentPage = 0;
-    const totalPages = 3;
-
-    function updatePagination() {
-        if (!bpTrack) return;
-        bpTrack.style.transform = `translateX(-${currentPage * 33.333}%)`;
-        
-        bpDots.forEach((dot, index) => {
-            if (index === currentPage) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-    }
-
-    if (bpPrev) {
-        bpPrev.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevent book close
-            if (currentPage > 0) {
-                currentPage--;
-                updatePagination();
-            }
-        });
-    }
-
-    if (bpNext) {
-        bpNext.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevent book close
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                updatePagination();
-            }
-        });
-    }
-
-    // prevent closing when interacting with content inside the track or dots
-    if (bpTrack) {
-        bpTrack.addEventListener('click', (e) => e.stopPropagation());
-    }
-    const dotsContainer = document.getElementById('bp-dots');
-    if (dotsContainer) {
-        dotsContainer.addEventListener('click', (e) => e.stopPropagation());
-    }
 });

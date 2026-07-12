@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Caveat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="projects.css">
     <link rel="stylesheet" href="pub-cert.css?v=2">
+    <link rel="stylesheet" href="contact.css">
 </head>
 
 <body>
@@ -68,6 +69,7 @@
 
     <!-- ============ HERO ============ -->
     <header class="hero" id="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
 
                 <!-- Left Column -->
         <div class="hero-left">
@@ -731,14 +733,12 @@
 
     <!-- ============ PUBLICATIONS SECTION ============ -->
     <section class="publications-section crt-view" id="publications">
-        <div class="contact-bg-text"
-            style="font-size: clamp(5rem, 11vw, 20rem); white-space: nowrap; color: rgba(255, 255, 255, 0.1); z-index: -1;">
-            PUBLICATION</div>
+        <div class="contact-bg-text">PUBLICATION</div>
 
         <div class="pub-layout-container gsap-reveal">
 
             <!-- Left Side: Main Book Mockup -->
-            <div class="pub-main-book">
+            <div class="pub-main-book" style="position: relative;">
                 <!-- The scene provides perspective -->
                 <div class="book-scene" id="book-scene">
                     <!-- The book floats and tilts (JS controls this) -->
@@ -752,16 +752,24 @@
                             <div class="book-drop-shadow" id="book-drop-shadow"></div>
 
                             <!-- ═══ BOOK COVER (flips open) ═══ -->
-                            <div class="book-cover" id="book-cover">
-                                <!-- Front face: the cover image -->
-                                <div class="book-cover-front">
+                            
+                            
+                            <!-- Page 1 (Cover) -->
+                            <div class="book-page" id="page-1" data-page="1" style="z-index: 4;">
+                                <div class="page-front" style="background: #1a1a2e;" onclick="flipPage(1, event)">
                                     <img src="genlearn_cover.png" alt="GenLearn Cover" class="cover-img">
                                     <div class="spine-glow"></div>
                                 </div>
-                                <!-- Back face: LEFT page when open — title page -->
-                                <div class="book-cover-back">
-                                    <div class="left-page-content">
-                                        <div class="left-page-journal">IJCRT &middot; 2025</div>
+                                <div class="page-back" onclick="unflipPage(1, event)">
+                                    <!-- Left side is blank per user request -->
+                                </div>
+                            </div>
+
+                            <!-- Page 2 -->
+                            <div class="book-page" id="page-2" data-page="2" style="z-index: 3;">
+                                <div class="page-front" onclick="flipPage(2, event)">
+                                    <div class="left-page-content" style="padding: 1.5rem;">
+                                        <div class="left-page-journal" style="margin-top: 1rem;">IJCRT &middot; 2025</div>
                                         <div class="left-page-logo">
                                             <svg viewBox="0 0 80 80" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="40" cy="40" r="36" stroke="#8a6030" stroke-width="2" fill="none" opacity="0.4"/>
@@ -775,129 +783,92 @@
                                         <p class="left-page-subtitle">AI-Based 3D Projection<br>Technology</p>
                                         <div class="left-page-rule"></div>
                                         <p class="left-page-meta">PSG Polytechnic College<br>Coimbatore, India</p>
-                                        <p class="left-page-meta" style="margin-top:0.8rem;">Published February 2025<br>IJCRT2502361</p>
                                         <div class="left-page-bottom-rule"></div>
-                                        <p class="left-page-footer">www.ijcrt.org</p>
+                                        <p class="bp-text" style="text-align:center; font-size: 0.55rem; margin-top:1rem;">GenLearn revolutionises education by combining <strong>Generative AI</strong> with immersive <strong>3D holographic projection</strong>.</p>
                                     </div>
+                                </div>
+                                <div class="page-back" onclick="unflipPage(2, event)">
+                                    <!-- Blank -->
                                 </div>
                             </div>
 
-                            <!-- ═══ INSIDE PAGES — 3-page slider revealed after cover flips ═══ -->
-                            <div class="book-inside" id="book-inside">
-
-                                <!-- Page navigation arrows -->
-                                <button class="bp-arrow bp-prev" id="bp-prev" aria-label="Previous page">&#8249;</button>
-                                <button class="bp-arrow bp-next" id="bp-next" aria-label="Next page">&#8250;</button>
-
-                                <!-- Page dots indicator -->
-                                <div class="bp-dots" id="bp-dots">
-                                    <span class="bp-dot active"></span>
-                                    <span class="bp-dot"></span>
-                                    <span class="bp-dot"></span>
+                            <!-- Page 3 -->
+                            <div class="book-page" id="page-3" data-page="3" style="z-index: 2;">
+                                <div class="page-front" onclick="flipPage(3, event)">
+                                    <div class="bp-page-inner">
+                                        <div class="bp-page-tag">2 / 4</div>
+                                        <h2 class="bp-heading">Proposed System</h2>
+                                        <div class="paper-sections">
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>Multi-modal input</strong> &mdash; text, voice &amp; object scan</span></div>
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>Generative AI</strong> &mdash; real-time 3D model gen</span></div>
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>Holographic</strong> &mdash; volumetric, no glasses</span></div>
+                                        </div>
+                                        <div class="bp-rule"></div>
+                                        <h2 class="bp-heading">Architecture &amp; Tech Stack</h2>
+                                        <div class="paper-sections">
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>Input Layer</strong> &mdash; Mic, Scanner</span></div>
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>App Layer</strong> &mdash; NLP &amp; Gen AI</span></div>
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>AI/NLP</strong> &mdash; TensorFlow, PyTorch, spaCy</span></div>
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>Frontend</strong> &mdash; React, Three.js</span></div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <!-- Slider track -->
-                                <div class="bp-track" id="bp-track">
-
-                                    <!-- ── PAGE 1: Abstract & Overview ── -->
-                                    <div class="bp-page">
-                                        <div class="bp-page-inner">
-                                            <div class="bp-page-tag">1 / 3</div>
-                                            <p class="paper-journal">IJCRT &middot; Vol. 13, Issue 2 &middot; Feb 2025</p>
-                                            <h2 class="bp-heading">Abstract</h2>
-                                            <p class="bp-text">GenLearn revolutionises education by combining <strong>Generative AI</strong> with immersive <strong>3D holographic projection</strong>. It accepts text, speech, or scanned objects via NLP &amp; ASR, and delivers personalised, interactive learning experiences.</p>
-                                            <div class="bp-rule"></div>
-                                            <h2 class="bp-heading">Existing System</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>Static textbooks &amp; 2D aids &mdash; limited interactivity</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>Lecture-based classrooms &mdash; passive absorption</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>E-learning modules &mdash; lack immersive experiences</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>One-size-fits-all &mdash; fails diverse learning styles</span></div>
-                                            </div>
-                                            <div class="bp-rule"></div>
-                                            <h2 class="bp-heading">Proposed System</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Multi-modal input</strong> &mdash; text, voice &amp; object scan</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Generative AI engine</strong> &mdash; real-time 3D model gen</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Holographic display</strong> &mdash; volumetric, no glasses</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Personalised ML</strong> &mdash; adapts to each user</span></div>
-                                            </div>
+                                <div class="page-back" onclick="unflipPage(3, event)">
+                                    <!-- Blank -->
+                                </div>
+                            </div>
+                            
+                            <!-- Page 4 -->
+                            <div class="book-page" id="page-4" data-page="4" style="z-index: 1;">
+                                <div class="page-front" onclick="flipPage(4, event)">
+                                    <div class="bp-page-inner">
+                                        <div class="bp-page-tag">3 / 4</div>
+                                        <h2 class="bp-heading">Implementation</h2>
+                                        <div class="paper-sections">
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>AI Training</strong> &mdash; fine-tuned NLP</span></div>
+                                            <div class="paper-section-item"><span class="section-dot"></span><span style="font-size:0.6rem"><strong>CV Algorithms</strong> &mdash; 3D mapping</span></div>
                                         </div>
+                                        <div class="bp-rule"></div>
+                                        <h2 class="bp-heading">Conclusion</h2>
+                                        <p class="bp-text">GenLearn bridges passive education and AI-driven immersive learning &mdash; delivering personalised experiences via holographic 3D projection.</p>
+                                        <p class="bp-ref">IJCRT2502361 &middot; www.ijcrt.org</p>
                                     </div>
+                                </div>
+                                <div class="page-back" onclick="unflipPage(4, event)">
+                                    <!-- Blank -->
+                                </div>
+                            </div>
 
-                                    <!-- ── PAGE 2: System Architecture & Specs ── -->
-                                    <div class="bp-page">
-                                        <div class="bp-page-inner">
-                                            <div class="bp-page-tag">2 / 3</div>
-                                            <h2 class="bp-heading">System Architecture</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Input Layer</strong> &mdash; Keyboard, mic (ASR) &amp; 3D scanner</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>App Layer</strong> &mdash; NLP processing &amp; Generative AI</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Data Layer</strong> &mdash; Computer vision &amp; enrichment</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Output Layer</strong> &mdash; 3D holographic + voice synth</span></div>
-                                            </div>
-                                            <div class="bp-rule"></div>
-                                            <h2 class="bp-heading">Hardware</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>Multi-core CPU &amp; dedicated GPU for 3D rendering</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>Noise-cancelling mic &amp; 3D scanner / camera</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span>3D projector &mdash; real-time, no glasses needed</span></div>
-                                            </div>
-                                            <div class="bp-rule"></div>
-                                            <h2 class="bp-heading">Software Stack</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>AI</strong> &mdash; TensorFlow / PyTorch</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>NLP</strong> &mdash; spaCy, NLTK</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>3D</strong> &mdash; Blender / Autodesk Maya</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Frontend</strong> &mdash; React + WebGL &amp; Three.js</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>DB</strong> &mdash; MongoDB / PostgreSQL</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- ── PAGE 3: Implementation, Testing & Conclusion ── -->
-                                    <div class="bp-page">
-                                        <div class="bp-page-inner">
-                                            <div class="bp-page-tag">3 / 3</div>
-                                            <h2 class="bp-heading">Implementation</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Front-End</strong> &mdash; HTML/CSS, React/Vue.js, WebGL</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Back-End</strong> &mdash; NLP APIs, ML services, WebSocket</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>AI Training</strong> &mdash; fine-tuned NLP &amp; Gen-AI models</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>CV Algorithms</strong> &mdash; object recognition &amp; 3D mapping</span></div>
-                                            </div>
-                                            <div class="bp-rule"></div>
-                                            <h2 class="bp-heading">Testing &amp; Deployment</h2>
-                                            <div class="paper-sections">
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Unit &amp; Integration</strong> &mdash; component validation</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>UAT</strong> &mdash; real user feedback loops</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Performance</strong> &mdash; load, stability &amp; scale</span></div>
-                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Phased rollout</strong> &mdash; staging &rarr; production</span></div>
-                                            </div>
-                                            <div class="bp-rule"></div>
-                                            <h2 class="bp-heading">Conclusion</h2>
-                                            <p class="bp-text">GenLearn bridges passive education and AI-driven immersive learning — delivering multi-sensory, personalised experiences via holographic 3D projection, gesture control, and generative AI.</p>
-                                            <p class="bp-ref">IJCRT2502361 &middot; www.ijcrt.org &middot; IEEE References</p>
-                                        </div>
-                                    </div>
-
-                                </div><!-- end bp-track -->
-                            </div><!-- end book-inside -->
+                            <!-- Fixed Back Cover -->
+                            <div class="book-back-cover">
+                                <div class="book-back-cover-inside" style="display:flex; justify-content:center; align-items:center;">
+                                     <h2 class="bp-heading" style="text-align:center; opacity: 0.5;">End of Summary</h2>
+                                </div>
+                            </div>
+                            
+                            
                         </div>
-                    </div>
+                <div id="tap-to-open-text" style="position: absolute; bottom: -50px; width: 100%; text-align: center; color: rgba(255,255,255,0.9); font-family: 'Caveat', cursive, sans-serif; font-size: 2rem; pointer-events: none; transition: opacity 0.3s ease; transform: rotate(-3deg);">
+                    Tap to open!
+                </div>
+                </div>
                 </div>
             </div>
 
         <!-- Right Side: Certificates Panel -->
         <div class="pub-cert-side">
             <h2 class="pub-cert-title">Certifications</h2>
-            <div class="cert-scroll-viewport" id="cert-scroll-viewport">
-                <div class="cert-scroll-track" id="cert-scroll-track">
+            <div class="cert-scroll-viewport cert-viewport-1">
+                <div class="cert-scroll-track">
                     <button class="cert-item" aria-label="View Certification"><img src="images/RAMAKRISHNA CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
                     <button class="cert-item" aria-label="View Certification"><img src="images/SCALER CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
                     <button class="cert-item" aria-label="View Certification"><img src="images/CHRIST CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
+                </div>
+            </div>
+            <div class="cert-scroll-viewport cert-viewport-2" style="margin-top: 1.5rem;">
+                <div class="cert-scroll-track">
                     <button class="cert-item" aria-label="View Certification"><img src="images/SCALER 2 CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
-                    <button class="cert-item" aria-label="View Certification"><img src="images/SHRIST CERTIFICATE IMAGE.jpg" alt="Certificate" loading="lazy"></button>
+                    <button class="cert-item" aria-label="View Certification"><img src="images/SHRIST CERTIFICATE IMAGE.jpg" alt="Certificate" loading="lazy" class="cert-rotated" data-rotated="true" style="transform: rotate(-90deg);"></button>
                     <button class="cert-item" aria-label="View Certification"><img src="images/SCALER 3 CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
                 </div>
             </div>
@@ -906,99 +877,107 @@
 </section>
 <!-- ============ CONTACT SECTION ============ -->
     <section class="contact-section" id="contact">
-        <div class="contact-bg-text">CONTACT</div>
 
-        <div class="mac-window-wrapper gsap-reveal">
-            <div class="mac-window">
-                <!-- Top Bar -->
-                <div class="mac-topbar">
-                    <div class="mac-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
+        <div class="contact-mac-window">
+
+            <!-- Mac OS top bar -->
+            <div class="contact-mac-topbar">
+                <span class="contact-mac-dot red"></span>
+                <span class="contact-mac-dot yellow"></span>
+                <span class="contact-mac-dot green"></span>
+                <span class="contact-mac-plus">+</span>
+            </div>
+
+            <!-- Window body -->
+            <div class="contact-mac-body">
+
+                <!-- Big headline -->
+                <h1 class="contact-headline">
+                    I craft products,<br>
+                    interactions &amp; <span class="contact-headline-italic">stories.</span>
+                </h1>
+
+                <!-- Sub desc, bottom-right aligned -->
+                <div class="contact-desc-row">
+                    <div class="contact-desc-text">
+                        <p>AI Engineer &amp; Full-Stack Developer. Based in Coimbatore.</p>
+                        <p>Open to opportunities &amp; collaborations.</p>
                     </div>
-                    <div class="mac-title">+</div>
                 </div>
 
-                <!-- Window Content -->
-                <div class="mac-content">
-                    <h1 class="mac-glow-title" style="text-align: center; margin-bottom: 4rem;">
-                        Let's build products,<br>
-                        interactions & <span class="mac-italic">stories.</span>
-                    </h1>
+                <!-- Two columns: info cards (left) + form (right) -->
+                <div class="contact-cols">
 
-                    <div class="contact-container" style="gap: 3rem;">
-                        <!-- Left Side -->
-                        <div class="contact-left">
-                            <h2 class="contact-title" style="font-size: 2.5rem;">Get in touch</h2>
-                            <p class="contact-desc">Have questions or ready to transform your ideas into reality? Let's
-                                talk.</p>
-
-                            <div class="contact-info-cards">
-                                <a href="mailto:deepakkumar.senthilmurugann@gmail.com" class="info-card">
-                                    <div class="info-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1.5">
-                                            <path
-                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                            <polyline points="22,6 12,13 2,6" />
-                                        </svg>
-                                    </div>
-                                    <div class="info-text">
-                                        <h4>Email us</h4>
-                                        <p>deepakkumar.senthilmurugann@gmail.com</p>
-                                    </div>
-                                    <div class="info-arrow">↗</div>
-                                </a>
-
-                                <a href="https://www.linkedin.com/in/deepakkumarsenthilmurugann/" target="_blank" rel="noopener" class="info-card">
-                                    <div class="info-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                            <rect x="2" y="9" width="4" height="12"></rect>
-                                            <circle cx="4" cy="4" r="2"></circle>
-                                        </svg>
-                                    </div>
-                                    <div class="info-text">
-                                        <h4>LinkedIn</h4>
-                                        <p>Connect with me</p>
-                                    </div>
-                                    <div class="info-arrow">↗</div>
-                                </a>
-
-                                <div class="info-card">
-                                    <div class="info-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1.5">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                            <circle cx="12" cy="10" r="3" />
-                                        </svg>
-                                    </div>
-                                    <div class="info-text">
-                                        <h4>Our location</h4>
-                                        <p>Coimbatore</p>
-                                    </div>
-                                    <div class="info-arrow">↗</div>
+                    <!-- LEFT: Info cards -->
+                    <div class="contact-info-col">
+                        <!-- Email -->
+                        <a href="mailto:deepakkumar.senthilmurugann@gmail.com" class="c-info-card">
+                            <div class="c-info-card-left">
+                                <div class="c-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="c-info-text">
+                                    <h4>Email</h4>
+                                    <p>deepakkumar.senthilmurugann@gmail.com</p>
                                 </div>
                             </div>
-                        </div>
+                            <span class="c-info-arrow">↗</span>
+                        </a>
 
-                        <!-- Right Side Form -->
-                        <div class="contact-right">
-                            <form class="contact-form">
-                                <input type="text" placeholder="Name" required />
-                                <input type="email" placeholder="Email" required />
-                                <textarea placeholder="Message" rows="5" required></textarea>
-                                <button type="submit" class="submit-btn">Submit</button>
-                                <button type="button" class="resume-trigger-btn" onclick="startResumeAnimation()">Resume</button>
-                            </form>
-                        </div>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/deepakkumarsenthilmurugann/" target="_blank" rel="noopener" class="c-info-card">
+                            <div class="c-info-card-left">
+                                <div class="c-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </div>
+                                <div class="c-info-text">
+                                    <h4>LinkedIn</h4>
+                                    <p>deepakkumarsenthilmurugann</p>
+                                </div>
+                            </div>
+                            <span class="c-info-arrow">↗</span>
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/DEEPAKKUMARSENTHILMURUGANN" target="_blank" rel="noopener" class="c-info-card">
+                            <div class="c-info-card-left">
+                                <div class="c-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </div>
+                                <div class="c-info-text">
+                                    <h4>GitHub</h4>
+                                    <p>DEEPAKKUMARSENTHILMURUGANN</p>
+                                </div>
+                            </div>
+                            <span class="c-info-arrow">↗</span>
+                        </a>
                     </div>
+
+                    <!-- RIGHT: Contact form -->
+                    <div class="contact-form-col">
+                        <input type="text" id="contact-name" placeholder="Name" required />
+                        <input type="email" id="contact-email" placeholder="Email" required />
+                        <textarea id="contact-message" placeholder="Message" rows="4" required></textarea>
+                        <button type="button" class="contact-submit-btn" id="contact-submit-btn" onclick="handleContactSubmit()">Submit</button>
+                        <button type="button" class="contact-resume-btn" onclick="startResumeAnimation()">Resume</button>
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </section>
+
+
 
     <!-- Empty Sections to allow scrolling as requested -->
     <section id="empty-1" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: 1px dashed rgba(255,255,255,0.1);">
@@ -1070,5 +1049,34 @@
     
     <script src="cert-slider.js?v=2"></script>
     <script src="projects.js" defer></script>    <script src="pub-book.js"></script>
+    <script src="pub-bg.js"></script>
+    <script src="contact-bg.js"></script>
+    <script src="hero-bg.js"></script>
+    <script>
+    function handleContactSubmit() {
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+        const btn = document.getElementById('contact-submit-btn');
+        if (!name || !email || !message) {
+            btn.textContent = 'Fill all fields!';
+            btn.style.background = 'linear-gradient(135deg, #ff6600, #cc3300)';
+            setTimeout(() => {
+                btn.textContent = 'Submit';
+                btn.style.background = '';
+            }, 2000);
+            return;
+        }
+        btn.textContent = 'Sent! ✓';
+        btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+        setTimeout(() => {
+            btn.textContent = 'Submit';
+            btn.style.background = '';
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-email').value = '';
+            document.getElementById('contact-message').value = '';
+        }, 2500);
+    }
+    </script>
 </body>
 </html>

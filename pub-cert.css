@@ -1,14 +1,42 @@
 /* ================= PUBLICATIONS & CERTIFICATIONS ================= */
 .publications-section {
     position: relative;
-    padding: 10rem 5%;
+    padding: 14rem 5% 0;
     overflow: hidden;
     background: radial-gradient(circle at top left, #1a1a1a 0%, #050505 100%);
 }
 
+/* Seamless fade from achievements into publications section */
+.publications-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, #050505 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Seamless fade into contact section */
+.publications-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent 0%, #0a0a0a 100%);
+    pointer-events: none;
+    z-index: 5;
+}
+
 .pub-layout-container {
+    position: relative;
+    z-index: 2;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 40px;
     max-width: 1400px;
     margin: 0 auto;
@@ -20,8 +48,8 @@
    LEFT SIDE — 3D REAL BOOK
    ================================================================ */
 .pub-main-book {
-    flex: 0 0 45%;
-    max-width: 45%;
+    flex: 0 0 40%;
+    max-width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,10 +119,10 @@
         inset -2px 0 8px rgba(0,0,0,0.3);
 }
 
-.book-cover-front .cover-img {
+.page-front .cover-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     display: block;
     border-radius: 3px 6px 6px 3px;
 }
@@ -430,18 +458,44 @@
    RIGHT SIDE — CERTIFICATIONS PANEL
    ================================================================ */
 .pub-cert-side {
-    flex: 0 0 50%;
-    max-width: 50%;
-    background: rgba(30, 30, 30, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    flex: 0 0 55%;
+    max-width: 55%;
+    position: relative;
+    background: #18181b; /* Solid dark background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 3.5rem 2rem 2rem 2rem; /* Reduced padding */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+
+/* Mac OS Top Bar */
+.pub-cert-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    background: #27272a; /* Lighter top bar */
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 1;
+}
+
+/* Mac OS Dots */
+.pub-cert-side::after {
+    content: '';
+    position: absolute;
+    top: 0.9rem;
+    left: 1.2rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+    z-index: 2;
 }
 
 .pub-cert-title {
@@ -450,6 +504,8 @@
     margin-bottom: 2rem;
     color: #fff;
     letter-spacing: 1px;
+    z-index: 2;
+    position: relative;
 }
 
 /* Scroll Viewport and Track */
@@ -474,8 +530,8 @@
     border: none;
     padding: 0;
     position: relative;
-    flex: 0 0 250px;
-    height: 180px;
+    flex: 0 0 160px;
+    height: 120px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -575,47 +631,83 @@
 
 
 /* ================================================================
-   INSIDE BOOK SLIDER (3 Pages)
+/* ================================================================
+   INSIDE BOOK PAGES (3D Flip)
    ================================================================ */
-.bp-track {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    transition: transform 0.4s ease-in-out;
+.book-page {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transform: rotateY(0deg);
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
 }
 
-.bp-page {
-    width: 33.333%;
-    height: 100%;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+.book-page.flipped {
+    transform: rotateY(-160deg);
 }
 
-/* Hide scrollbar for a cleaner book look */
-.bp-page::-webkit-scrollbar {
-    width: 4px;
+.page-front, .page-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    background: linear-gradient(160deg, #faf8f2 0%, #f0ebe0 100%);
+    box-shadow: inset 2px 0 10px rgba(0,0,0,0.12);
 }
-.bp-page::-webkit-scrollbar-thumb {
-    background: rgba(138, 96, 48, 0.3);
-    border-radius: 4px;
+
+.page-front {
+    border-radius: 3px 6px 6px 3px;
+    box-shadow: inset -4px 0 12px rgba(0,0,0,0.08);
+}
+
+.page-back {
+    transform: rotateY(180deg);
+    border-radius: 6px 3px 3px 6px;
+}
+
+/* Hard back cover */
+.book-back-cover {
+    position: absolute;
+    inset: 0;
+    background: #1a1a2e;
+    border-radius: 3px 6px 6px 3px;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.5);
+    z-index: 0;
+}
+
+.book-back-cover-inside {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #faf8f2 0%, #f0ebe0 100%);
+    border-radius: 3px 6px 6px 3px;
+    box-shadow: inset -4px 0 12px rgba(0,0,0,0.08);
 }
 
 .bp-page-inner {
-    position: relative;
+    padding: 1.5rem;
     height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .bp-page-tag {
     position: absolute;
-    top: -0.5rem;
-    right: 0;
+    top: 0.8rem;
+    right: 1.5rem;
     font-size: 0.5rem;
     color: #8a6030;
     font-weight: 700;
     font-family: 'Georgia', serif;
+}
+
+.page-back .bp-page-tag {
+    left: 1.5rem;
+    right: auto;
 }
 
 .bp-heading {
@@ -648,15 +740,25 @@
     color: #8a6030;
     font-family: 'Georgia', serif;
     font-style: italic;
-    margin-top: 1rem;
+    margin-top: auto;
     text-align: center;
 }
 
-/* Navigation arrows inside book */
-.bp-arrow {
+/* Page Navigation Arrows */
+.bp-nav-arrows {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 0.5rem;
+    right: 1rem;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+.page-back .bp-nav-arrows {
+    left: 1rem;
+    right: auto;
+}
+
+.bp-arrow {
     background: rgba(255,255,255,0.7);
     border: 1px solid rgba(138,96,48,0.3);
     color: #8a6030;
@@ -667,45 +769,13 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 10;
     font-size: 1.2rem;
-    opacity: 0;
-    transition: opacity 0.3s ease, background 0.2s ease;
-}
-
-.book-inside:hover .bp-arrow {
-    opacity: 1;
+    transition: background 0.2s ease;
 }
 
 .bp-arrow:hover {
     background: #fff;
     color: #1a1008;
-}
-
-.bp-prev { left: 0.5rem; }
-.bp-next { right: 0.5rem; }
-
-/* Navigation Dots */
-.bp-dots {
-    position: absolute;
-    bottom: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-    z-index: 10;
-}
-
-.bp-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(138,96,48,0.3);
-    transition: background 0.3s ease;
-}
-
-.bp-dot.active {
-    background: #8a6030;
 }
 
 /* ================================================================
