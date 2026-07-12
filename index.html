@@ -746,36 +746,143 @@
                         <!-- The book body: everything 3D inside here -->
                         <div class="book-body">
 
-                            <!-- COVER PAGE — flips open on click -->
+                            <!-- ═══ BOOK SPINE / EDGE ═══ -->
+                            <div class="book-spine"></div>
+                            <div class="book-bottom-edge"></div>
+                            <div class="book-drop-shadow" id="book-drop-shadow"></div>
+
+                            <!-- ═══ BOOK COVER (flips open) ═══ -->
                             <div class="book-cover" id="book-cover">
                                 <!-- Front face: the cover image -->
                                 <div class="book-cover-front">
                                     <img src="genlearn_cover.png" alt="GenLearn Cover" class="cover-img">
-                                    <!-- Spine highlight glow -->
                                     <div class="spine-glow"></div>
                                 </div>
-                                <!-- Back face: inside of the cover (cream/paper colour) -->
-                                <div class="book-cover-back"></div>
-                            </div>
-
-                            <!-- INSIDE PAGE — revealed after cover flips -->
-                            <div class="book-inside">
-                                <div class="book-inside-content">
-                                    <h2 class="page-heading">5. IMPLEMENTATION</h2>
-                                    <p>The front-end focuses on a user-friendly interface. HTML/CSS structure the application, JavaScript frameworks create dynamic UIs, and WebGL/Three.js render 3D graphics in the browser.</p>
-                                    <h2 class="page-heading">CONCLUSION</h2>
-                                    <p>The system enables multi-modal inputs for diverse learning styles. Its generative AI engine processes queries and produces contextually relevant 3D models, making complex topics accessible.</p>
-                                    <!-- Tap-to-close hint -->
-                                    <p class="close-hint">↩ tap to close</p>
+                                <!-- Back face: LEFT page when open — title page -->
+                                <div class="book-cover-back">
+                                    <div class="left-page-content">
+                                        <div class="left-page-journal">IJCRT &middot; 2025</div>
+                                        <div class="left-page-logo">
+                                            <svg viewBox="0 0 80 80" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="40" cy="40" r="36" stroke="#8a6030" stroke-width="2" fill="none" opacity="0.4"/>
+                                                <circle cx="40" cy="40" r="24" stroke="#8a6030" stroke-width="1.5" fill="none" opacity="0.3"/>
+                                                <circle cx="40" cy="40" r="10" fill="#8a6030" opacity="0.5"/>
+                                                <line x1="40" y1="4" x2="40" y2="76" stroke="#8a6030" stroke-width="1" opacity="0.25"/>
+                                                <line x1="4" y1="40" x2="76" y2="40" stroke="#8a6030" stroke-width="1" opacity="0.25"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="left-page-title">GenLearn</h3>
+                                        <p class="left-page-subtitle">AI-Based 3D Projection<br>Technology</p>
+                                        <div class="left-page-rule"></div>
+                                        <p class="left-page-meta">PSG Polytechnic College<br>Coimbatore, India</p>
+                                        <p class="left-page-meta" style="margin-top:0.8rem;">Published February 2025<br>IJCRT2502361</p>
+                                        <div class="left-page-bottom-rule"></div>
+                                        <p class="left-page-footer">www.ijcrt.org</p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Book spine thickness effect -->
-                            <div class="book-spine"></div>
-                            <!-- Book bottom edge -->
-                            <div class="book-bottom-edge"></div>
-                            <!-- Drop shadow -->
-                            <div class="book-drop-shadow" id="book-drop-shadow"></div>
+                            <!-- ═══ INSIDE PAGES — 3-page slider revealed after cover flips ═══ -->
+                            <div class="book-inside" id="book-inside">
+
+                                <!-- Page navigation arrows -->
+                                <button class="bp-arrow bp-prev" id="bp-prev" aria-label="Previous page">&#8249;</button>
+                                <button class="bp-arrow bp-next" id="bp-next" aria-label="Next page">&#8250;</button>
+
+                                <!-- Page dots indicator -->
+                                <div class="bp-dots" id="bp-dots">
+                                    <span class="bp-dot active"></span>
+                                    <span class="bp-dot"></span>
+                                    <span class="bp-dot"></span>
+                                </div>
+
+                                <!-- Slider track -->
+                                <div class="bp-track" id="bp-track">
+
+                                    <!-- ── PAGE 1: Abstract & Overview ── -->
+                                    <div class="bp-page">
+                                        <div class="bp-page-inner">
+                                            <div class="bp-page-tag">1 / 3</div>
+                                            <p class="paper-journal">IJCRT &middot; Vol. 13, Issue 2 &middot; Feb 2025</p>
+                                            <h2 class="bp-heading">Abstract</h2>
+                                            <p class="bp-text">GenLearn revolutionises education by combining <strong>Generative AI</strong> with immersive <strong>3D holographic projection</strong>. It accepts text, speech, or scanned objects via NLP &amp; ASR, and delivers personalised, interactive learning experiences.</p>
+                                            <div class="bp-rule"></div>
+                                            <h2 class="bp-heading">Existing System</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>Static textbooks &amp; 2D aids &mdash; limited interactivity</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>Lecture-based classrooms &mdash; passive absorption</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>E-learning modules &mdash; lack immersive experiences</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>One-size-fits-all &mdash; fails diverse learning styles</span></div>
+                                            </div>
+                                            <div class="bp-rule"></div>
+                                            <h2 class="bp-heading">Proposed System</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Multi-modal input</strong> &mdash; text, voice &amp; object scan</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Generative AI engine</strong> &mdash; real-time 3D model gen</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Holographic display</strong> &mdash; volumetric, no glasses</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Personalised ML</strong> &mdash; adapts to each user</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ── PAGE 2: System Architecture & Specs ── -->
+                                    <div class="bp-page">
+                                        <div class="bp-page-inner">
+                                            <div class="bp-page-tag">2 / 3</div>
+                                            <h2 class="bp-heading">System Architecture</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Input Layer</strong> &mdash; Keyboard, mic (ASR) &amp; 3D scanner</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>App Layer</strong> &mdash; NLP processing &amp; Generative AI</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Data Layer</strong> &mdash; Computer vision &amp; enrichment</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Output Layer</strong> &mdash; 3D holographic + voice synth</span></div>
+                                            </div>
+                                            <div class="bp-rule"></div>
+                                            <h2 class="bp-heading">Hardware</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>Multi-core CPU &amp; dedicated GPU for 3D rendering</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>Noise-cancelling mic &amp; 3D scanner / camera</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span>3D projector &mdash; real-time, no glasses needed</span></div>
+                                            </div>
+                                            <div class="bp-rule"></div>
+                                            <h2 class="bp-heading">Software Stack</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>AI</strong> &mdash; TensorFlow / PyTorch</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>NLP</strong> &mdash; spaCy, NLTK</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>3D</strong> &mdash; Blender / Autodesk Maya</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Frontend</strong> &mdash; React + WebGL &amp; Three.js</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>DB</strong> &mdash; MongoDB / PostgreSQL</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ── PAGE 3: Implementation, Testing & Conclusion ── -->
+                                    <div class="bp-page">
+                                        <div class="bp-page-inner">
+                                            <div class="bp-page-tag">3 / 3</div>
+                                            <h2 class="bp-heading">Implementation</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Front-End</strong> &mdash; HTML/CSS, React/Vue.js, WebGL</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Back-End</strong> &mdash; NLP APIs, ML services, WebSocket</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>AI Training</strong> &mdash; fine-tuned NLP &amp; Gen-AI models</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>CV Algorithms</strong> &mdash; object recognition &amp; 3D mapping</span></div>
+                                            </div>
+                                            <div class="bp-rule"></div>
+                                            <h2 class="bp-heading">Testing &amp; Deployment</h2>
+                                            <div class="paper-sections">
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Unit &amp; Integration</strong> &mdash; component validation</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>UAT</strong> &mdash; real user feedback loops</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Performance</strong> &mdash; load, stability &amp; scale</span></div>
+                                                <div class="paper-section-item"><span class="section-dot"></span><span><strong>Phased rollout</strong> &mdash; staging &rarr; production</span></div>
+                                            </div>
+                                            <div class="bp-rule"></div>
+                                            <h2 class="bp-heading">Conclusion</h2>
+                                            <p class="bp-text">GenLearn bridges passive education and AI-driven immersive learning — delivering multi-sensory, personalised experiences via holographic 3D projection, gesture control, and generative AI.</p>
+                                            <p class="bp-ref">IJCRT2502361 &middot; www.ijcrt.org &middot; IEEE References</p>
+                                        </div>
+                                    </div>
+
+                                </div><!-- end bp-track -->
+                            </div><!-- end book-inside -->
                         </div>
                     </div>
                 </div>

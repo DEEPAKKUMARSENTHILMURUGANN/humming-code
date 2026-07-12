@@ -111,4 +111,55 @@ document.addEventListener('DOMContentLoaded', () => {
             else         { closeBook(); bookFloat.setAttribute('aria-label', 'Open book'); }
         }
     });
+
+    // ── 6. Inside Book Pagination ──────────────────────────────────────
+    const bpTrack = document.getElementById('bp-track');
+    const bpPrev = document.getElementById('bp-prev');
+    const bpNext = document.getElementById('bp-next');
+    const bpDots = document.querySelectorAll('.bp-dot');
+    
+    let currentPage = 0;
+    const totalPages = 3;
+
+    function updatePagination() {
+        if (!bpTrack) return;
+        bpTrack.style.transform = `translateX(-${currentPage * 33.333}%)`;
+        
+        bpDots.forEach((dot, index) => {
+            if (index === currentPage) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    if (bpPrev) {
+        bpPrev.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent book close
+            if (currentPage > 0) {
+                currentPage--;
+                updatePagination();
+            }
+        });
+    }
+
+    if (bpNext) {
+        bpNext.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent book close
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                updatePagination();
+            }
+        });
+    }
+
+    // prevent closing when interacting with content inside the track or dots
+    if (bpTrack) {
+        bpTrack.addEventListener('click', (e) => e.stopPropagation());
+    }
+    const dotsContainer = document.getElementById('bp-dots');
+    if (dotsContainer) {
+        dotsContainer.addEventListener('click', (e) => e.stopPropagation());
+    }
 });

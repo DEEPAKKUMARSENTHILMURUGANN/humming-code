@@ -134,16 +134,104 @@
     opacity: 1;
 }
 
-/* Back face of the cover: inside cover (cream paper) */
+/* Back face of the cover: inside cover (cream paper) — LEFT page when open */
 .book-cover-back {
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform: rotateY(180deg);
-    background: linear-gradient(135deg, #f5f0e8 0%, #ede8d8 100%);
+    background: linear-gradient(160deg, #faf8f2 0%, #f0ebe0 100%);
     border-radius: 6px 3px 3px 6px;
     box-shadow: inset 2px 0 10px rgba(0,0,0,0.12);
+    overflow: hidden;
+}
+
+/* Left page content (title page) */
+.left-page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.left-page-journal {
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a6030;
+    margin-bottom: 0.7rem;
+    font-family: 'Georgia', serif;
+    opacity: 0.7;
+}
+
+.left-page-logo {
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+}
+
+.left-page-title {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #1a1008;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.2rem 0;
+}
+
+.left-page-subtitle {
+    font-size: 0.58rem;
+    color: #5a4a35;
+    font-family: 'Georgia', serif;
+    line-height: 1.5;
+    margin: 0 0 0.6rem 0;
+    font-style: italic;
+}
+
+.left-page-rule,
+.left-page-bottom-rule {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c8a870, transparent);
+    margin: 0.4rem auto;
+}
+
+.left-page-meta {
+    font-size: 0.55rem;
+    color: #7a6545;
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.left-page-footer {
+    font-size: 0.5rem;
+    color: #8a6030;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.06em;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* Center gutter shadow — appears between pages when open */
+.book-inside::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(to right,
+        rgba(80,50,20,0.2) 0%,
+        rgba(80,50,20,0) 100%);
+    pointer-events: none;
+    z-index: 5;
 }
 
 /* ── INSIDE PAGE ──────────────────────────────────────────────────
@@ -208,7 +296,85 @@
     letter-spacing: 0.04em;
 }
 
-/* ── BOOK PHYSICAL EDGES (thickness illusion) ────────────────────── */
+/* ── Paper summary styles (inside page content) ─────────────────── */
+.paper-journal {
+    font-size: 0.55rem !important;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8a7060 !important;
+    margin: 0 0 0.4rem 0 !important;
+    font-family: 'Georgia', serif;
+}
+
+.page-heading {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    color: #1a1008;
+    margin: 0 0 0.3rem 0;
+    font-family: 'Georgia', serif;
+    line-height: 1.3;
+}
+
+.paper-authors {
+    font-size: 0.58rem !important;
+    color: #6a5a45 !important;
+    margin: 0 0 0.5rem 0 !important;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+}
+
+.paper-college {
+    font-style: normal;
+    font-weight: 600;
+}
+
+.paper-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #c8b898, transparent);
+    margin: 0.5rem 0;
+}
+
+.paper-abstract {
+    font-size: 0.6rem !important;
+    color: #3a2e1e !important;
+    line-height: 1.65;
+    margin: 0 0 0.6rem 0 !important;
+    font-family: 'Georgia', serif;
+}
+
+.paper-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.paper-section-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.58rem;
+    color: #3a2e1e;
+    font-family: 'Georgia', serif;
+    line-height: 1.4;
+}
+
+.paper-section-item strong {
+    color: #1a1008;
+}
+
+.section-dot {
+    flex: 0 0 5px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: #8a6030;
+    margin-top: 0.3rem;
+}
+
+
 
 /* Spine: left side thickness */
 .book-spine {
@@ -407,6 +573,140 @@
     will-change: transform, opacity;
 }
 
+
+/* ================================================================
+   INSIDE BOOK SLIDER (3 Pages)
+   ================================================================ */
+.bp-track {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+.bp-page {
+    width: 33.333%;
+    height: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Hide scrollbar for a cleaner book look */
+.bp-page::-webkit-scrollbar {
+    width: 4px;
+}
+.bp-page::-webkit-scrollbar-thumb {
+    background: rgba(138, 96, 48, 0.3);
+    border-radius: 4px;
+}
+
+.bp-page-inner {
+    position: relative;
+    height: 100%;
+}
+
+.bp-page-tag {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    font-size: 0.5rem;
+    color: #8a6030;
+    font-weight: 700;
+    font-family: 'Georgia', serif;
+}
+
+.bp-heading {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    color: #1a1008;
+    margin: 0 0 0.3rem 0;
+    font-family: 'Georgia', serif;
+    line-height: 1.3;
+}
+
+.bp-text {
+    font-size: 0.6rem;
+    color: #3a2e1e;
+    line-height: 1.65;
+    margin: 0 0 0.6rem 0;
+    font-family: 'Georgia', serif;
+}
+
+.bp-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #c8b898, transparent);
+    margin: 0.5rem 0;
+}
+
+.bp-ref {
+    font-size: 0.5rem;
+    color: #8a6030;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Navigation arrows inside book */
+.bp-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(138,96,48,0.3);
+    color: #8a6030;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease, background 0.2s ease;
+}
+
+.book-inside:hover .bp-arrow {
+    opacity: 1;
+}
+
+.bp-arrow:hover {
+    background: #fff;
+    color: #1a1008;
+}
+
+.bp-prev { left: 0.5rem; }
+.bp-next { right: 0.5rem; }
+
+/* Navigation Dots */
+.bp-dots {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+}
+
+.bp-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(138,96,48,0.3);
+    transition: background 0.3s ease;
+}
+
+.bp-dot.active {
+    background: #8a6030;
+}
 
 /* ================================================================
    RESPONSIVE
