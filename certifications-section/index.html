@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications Section</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Certifications Section -->
+    <section class="certifications-section" aria-labelledby="cert-heading">
+        <h2 id="cert-heading" class="cert-heading">Certifications</h2>
+        
+        <!-- The overflow wrapper that hides the scrollbar and clips the edges -->
+        <div class="cert-track-wrapper" id="cert-track-wrapper">
+            <!-- The actual track that moves -->
+            <div class="cert-track" id="cert-track">
+                
+                <!-- Certificate Card 1 -->
+                <button class="cert-card" aria-label="View Certification 1">
+                    <img src="https://via.placeholder.com/600x400/333/fff?text=Certificate+1" alt="Certificate 1 Thumbnail" draggable="false">
+                </button>
+                
+                <!-- Certificate Card 2 -->
+                <button class="cert-card" aria-label="View Certification 2">
+                    <img src="https://via.placeholder.com/600x400/444/fff?text=Certificate+2" alt="Certificate 2 Thumbnail" draggable="false">
+                </button>
+
+                <!-- Certificate Card 3 -->
+                <button class="cert-card" aria-label="View Certification 3">
+                    <img src="https://via.placeholder.com/600x400/555/fff?text=Certificate+3" alt="Certificate 3 Thumbnail" draggable="false">
+                </button>
+
+                <!-- Certificate Card 4 -->
+                <button class="cert-card" aria-label="View Certification 4">
+                    <img src="https://via.placeholder.com/600x400/666/fff?text=Certificate+4" alt="Certificate 4 Thumbnail" draggable="false">
+                </button>
+
+                <!-- Certificate Card 5 -->
+                <button class="cert-card" aria-label="View Certification 5">
+                    <img src="https://via.placeholder.com/600x400/777/fff?text=Certificate+5" alt="Certificate 5 Thumbnail" draggable="false">
+                </button>
+
+                <!-- Certificate Card 6 -->
+                <button class="cert-card" aria-label="View Certification 6">
+                    <img src="https://via.placeholder.com/600x400/888/fff?text=Certificate+6" alt="Certificate 6 Thumbnail" draggable="false">
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <div class="lightbox-content">
+            <img src="" alt="Expanded Certificate" id="lightbox-img">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

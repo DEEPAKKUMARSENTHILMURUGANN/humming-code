@@ -1,0 +1,85 @@
+/* ========================================
+   Intro Splash Screen — Professional Style
+   ======================================== */
+
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Two panel split for the dramatic exit */
+.intro-panel {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #0d0d0f;
+}
+
+.intro-panel-top    { top: 0; }
+.intro-panel-bottom { bottom: 0; }
+
+/* Centre stage for the word */
+#intro-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 2;
+}
+
+/* Clip container — extra padding so no script letter is ever cut */
+.intro-clip {
+    overflow: hidden;
+    padding: 0.3em 0.5em 0.4em;  /* top/side/bottom — room for ascenders & descenders */
+    line-height: 1.2;
+}
+
+#intro-word {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 700;
+    color: #f2f2f2;
+    letter-spacing: -3px;
+    display: block;
+    transform: translateY(110%); /* starts hidden below clip */
+    will-change: transform;
+}
+
+#intro-lang-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+/* Progress bar */
+#intro-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, #5e6ad2, #a0a8f0, #5e6ad2);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+    z-index: 3;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}

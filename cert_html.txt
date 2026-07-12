@@ -1,0 +1,369 @@
+<div class="cert-carousel">
+    <div class="list">
+        <div class="item">
+            <img src="images/BRAINS TRSU JS CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">BRAINS TRSU JS</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">BRAINS TRSU JS</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/BRAINS TRSU JS CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/BRAINS TRUST SEC CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">BRAINS TRUST SEC</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">BRAINS TRUST SEC</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/BRAINS TRUST SEC CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/CHRIST CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">CHRIST</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">CHRIST</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/CHRIST CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/CISPRO WORKSHOP CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">CISPRO WORKSHOP</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">CISPRO WORKSHOP</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/CISPRO WORKSHOP CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/INTERNSHIP CERTIFICATE IMAGE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">INTERNSHIP</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">INTERNSHIP</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/INTERNSHIP CERTIFICATE IMAGE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/NACHIMUTHU CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">NACHIMUTHU</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">NACHIMUTHU</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/NACHIMUTHU CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/RAMAKRISHNA CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">RAMAKRISHNA</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">RAMAKRISHNA</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/RAMAKRISHNA CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/REFINEMENT WORKSHOP CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">REFINEMENT WORKSHOP</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">REFINEMENT WORKSHOP</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/REFINEMENT WORKSHOP CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/SCALER 2 CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">SCALER 2</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">SCALER 2</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/SCALER 2 CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/SCALER 3 CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">SCALER 3</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">SCALER 3</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/SCALER 3 CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/SCALER CERTIFICATE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">SCALER</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">SCALER</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/SCALER CERTIFICATE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/SHRIST CERTIFICATE IMAGE.jpg">
+            <div class="introduce">
+                <div class="title">CERTIFICATION</div>
+                <div class="topic">SHRIST</div>
+                <div class="des">
+                    Officially earned certification showcasing skills and dedication.
+                </div>
+                <button class="seeMore">SEE MORE &#8599</button>
+            </div>
+            <div class="detail">
+                <div class="title">SHRIST</div>
+                <div class="des">
+                    This certificate represents the successful completion and mastery of the required topics.
+                </div>
+                <div class="specifications">
+                    <div>
+                        <p>Status</p>
+                        <p>Verified</p>
+                    </div>
+                    <div>
+                        <p>Type</p>
+                        <p>Digital</p>
+                    </div>
+                </div>
+                <div class="checkout">
+                    <button onclick="openCertModal('images/SHRIST CERTIFICATE IMAGE.jpg')">VIEW FULL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrows">
+        <button id="cert-prev"><</button>
+        <button id="cert-next">></button>
+        <button id="cert-back">Go Back &#8599</button>
+    </div>
+</div>

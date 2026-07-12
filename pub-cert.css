@@ -1,0 +1,461 @@
+/* ================= PUBLICATIONS & CERTIFICATIONS ================= */
+.publications-section {
+    position: relative;
+    padding: 10rem 5%;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, #1a1a1a 0%, #050505 100%);
+}
+
+.pub-layout-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* ================================================================
+   LEFT SIDE — 3D REAL BOOK
+   ================================================================ */
+.pub-main-book {
+    flex: 0 0 45%;
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+/* Scene: provides perspective depth for the whole book */
+.book-scene {
+    perspective: 1200px;
+    perspective-origin: 60% 50%;
+    width: 280px;
+    height: 380px;
+    position: relative;
+}
+
+/* Float wrapper: JS animates this for idle float + parallax tilt */
+.book-float {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg) rotateY(-25deg) rotateZ(5deg);
+    will-change: transform;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+}
+
+/* Book body: the actual physical book in 3D space */
+.book-body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+/* ── COVER ────────────────────────────────────────────────────────
+   The cover sits on top and rotates open along the LEFT spine.
+   transform-origin: left center = the spine hinge.
+   ---------------------------------------------------------------- */
+.book-cover {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transform: rotateY(0deg);
+    /* 1000ms matches JS FLIP_DURATION */
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* When JS adds .open, the cover swings to -160deg (book opens) */
+.book-cover.open {
+    transform: rotateY(-160deg);
+}
+
+/* Front face of the cover: the cover image */
+.book-cover-front {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 3px 6px 6px 3px;
+    overflow: hidden;
+    background: #1a1a2e;
+    box-shadow:
+        2px 0 6px rgba(0,0,0,0.5),
+        inset -2px 0 8px rgba(0,0,0,0.3);
+}
+
+.book-cover-front .cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 3px 6px 6px 3px;
+}
+
+/* Lighting overlay: darkens during the flip past 90° */
+.book-cover-front::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    transition: background 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 3px 6px 6px 3px;
+    pointer-events: none;
+}
+
+.book-cover.open .book-cover-front::after {
+    background: rgba(0,0,0,0.6);
+}
+
+/* Spine-edge shimmer: hints the book is interactive */
+.spine-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(to right,
+        rgba(255,255,255,0.5) 0%,
+        rgba(255,255,255,0.0) 100%);
+    border-radius: 3px 0 0 3px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.book-float:hover .spine-glow {
+    opacity: 1;
+}
+
+/* Back face of the cover: inside cover (cream paper) */
+.book-cover-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede8d8 100%);
+    border-radius: 6px 3px 3px 6px;
+    box-shadow: inset 2px 0 10px rgba(0,0,0,0.12);
+}
+
+/* ── INSIDE PAGE ──────────────────────────────────────────────────
+   Sits behind the cover; revealed when cover swings open.
+   ---------------------------------------------------------------- */
+.book-inside {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #faf8f2 0%, #f0ebe0 100%);
+    border-radius: 3px 6px 6px 3px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: inset -4px 0 12px rgba(0,0,0,0.08);
+}
+
+/* Hover close affordance: subtle brightening edge */
+.book-inside::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(100,80,40,0);
+    border-radius: 3px 6px 6px 3px;
+    transition: border-color 0.3s ease;
+    pointer-events: none;
+}
+
+.book-float.book-is-open .book-inside:hover::after {
+    border-color: rgba(100,80,40,0.3);
+}
+
+.book-inside-content {
+    padding: 1.5rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+.page-heading {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2a1f0e;
+    margin: 0 0 0.4rem 0;
+    font-family: 'Georgia', serif;
+}
+
+.book-inside-content p {
+    font-size: 0.65rem;
+    color: #4a3f2e;
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+    font-family: 'Georgia', serif;
+}
+
+.close-hint {
+    font-size: 0.6rem !important;
+    color: rgba(100,80,40,0.5) !important;
+    font-style: italic;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important;
+    letter-spacing: 0.04em;
+}
+
+/* ── BOOK PHYSICAL EDGES (thickness illusion) ────────────────────── */
+
+/* Spine: left side thickness */
+.book-spine {
+    position: absolute;
+    top: 2px;
+    left: -14px;
+    width: 14px;
+    height: calc(100% - 4px);
+    background: linear-gradient(to right, #2a1f0e, #4a3525);
+    transform-origin: right center;
+    transform: rotateY(-90deg);
+    border-radius: 3px 0 0 3px;
+    box-shadow: inset -3px 0 8px rgba(0,0,0,0.4);
+}
+
+/* Bottom edge */
+.book-bottom-edge {
+    position: absolute;
+    bottom: -10px;
+    left: 2px;
+    width: calc(100% - 4px);
+    height: 10px;
+    background: linear-gradient(to bottom, #d5cfc0, #b8b0a0);
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+    border-radius: 0 0 3px 3px;
+}
+
+/* Drop shadow blob under the book */
+.book-drop-shadow {
+    position: absolute;
+    bottom: -40px;
+    left: 5%;
+    width: 90%;
+    height: 30px;
+    background: radial-gradient(ellipse at center,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.0) 75%);
+    filter: blur(10px);
+    transform-origin: center top;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1),
+                opacity   1s ease;
+    pointer-events: none;
+}
+
+.book-float.book-is-open .book-drop-shadow {
+    transform: translateX(10%) scaleX(0.7);
+    opacity: 0.65;
+}
+
+
+/* ================================================================
+   RIGHT SIDE — CERTIFICATIONS PANEL
+   ================================================================ */
+.pub-cert-side {
+    flex: 0 0 50%;
+    max-width: 50%;
+    background: rgba(30, 30, 30, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pub-cert-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Scroll Viewport and Track */
+.cert-scroll-viewport {
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+}
+
+.cert-scroll-viewport:active {
+    cursor: grabbing;
+}
+
+.cert-scroll-track {
+    display: flex;
+    gap: 1.2rem;
+    width: max-content;
+}
+
+.cert-item {
+    appearance: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    flex: 0 0 250px;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background: #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.cert-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.7;
+    filter: grayscale(80%);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cert-item:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        z-index: 10;
+    }
+
+    .cert-item:hover img {
+        opacity: 1;
+        filter: grayscale(0%);
+    }
+}
+
+
+/* ================================================================
+   LIGHTBOX MODAL
+   ================================================================ */
+.cert-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.cert-lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.cert-lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform 0.2s ease;
+}
+
+.cert-lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+.cert-lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cert-lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    will-change: transform, opacity;
+}
+
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+    .pub-main-book {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    .pub-cert-side {
+        flex: 1;
+        max-width: unset;
+    }
+}
+
+@media (max-width: 800px) {
+    .pub-layout-container {
+        flex-direction: column;
+    }
+
+    .pub-main-book {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 4rem;
+    }
+
+    .pub-cert-side {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .book-scene {
+        width: 220px;
+        height: 300px;
+    }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .book-cover,
+    .book-cover-front::after,
+    .book-drop-shadow {
+        transition: none;
+    }
+    .cert-item {
+        transition: none;
+    }
+    .cert-lightbox {
+        transition: none;
+    }
+}

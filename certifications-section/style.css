@@ -1,0 +1,217 @@
+/* =========================================================================
+   CERTIFICATIONS SECTION STYLES
+   ========================================================================= */
+
+/* Custom Properties for easy tweaking */
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --card-radius: 12px;
+    --card-width: 320px;
+    --card-height: 220px;
+    --card-gap: 2rem;
+    --shadow-default: 0 10px 20px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 15px 30px rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.15);
+    --transition-speed: 0.3s;
+}
+
+/* Basic Reset for the standalone section */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    /* Adding some extra height so we can scroll down to see the reveal animation */
+    min-height: 150vh; 
+    padding-top: 10vh;
+}
+
+/* --- Main Section --- */
+.certifications-section {
+    padding: 6rem 0;
+    overflow: hidden; /* Prevent horizontal scrollbar on body */
+    position: relative;
+    width: 100%;
+}
+
+.cert-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    padding-left: 5%;
+    letter-spacing: -0.02em;
+}
+
+/* --- Scroll Track Wrapper --- */
+.cert-track-wrapper {
+    width: 100%;
+    overflow: hidden; /* Hide scrollbars, we use JS and drag to scroll */
+    cursor: grab;
+    padding: 2rem 0; /* padding for drop shadows and hover scale */
+    
+    /* Fading edges to create the "peeking" effect */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.cert-track-wrapper:active {
+    cursor: grabbing;
+}
+
+/* --- The Moving Track --- */
+.cert-track {
+    display: flex;
+    gap: var(--card-gap);
+    width: max-content; 
+    padding: 0 5%;
+    will-change: transform; /* Optimize for 60fps scrolling */
+}
+
+/* --- Certificate Cards --- */
+.cert-card {
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    
+    width: var(--card-width);
+    height: var(--card-height);
+    flex-shrink: 0;
+    border-radius: var(--card-radius);
+    background-color: #fff; /* fallback */
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-default);
+    overflow: hidden;
+    
+    /* Intersection Observer Initial State (Fade + Slide up) */
+    opacity: 0;
+    transform: translateY(40px);
+    
+    /* Hover transitions (Opacity/Transform handled by JS for reveal, but CSS for hover) */
+    transition: transform var(--transition-speed) ease, 
+                box-shadow var(--transition-speed) ease,
+                opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Once revealed by JS */
+.cert-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cert-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none; /* prevent dragging the image element itself */
+}
+
+/* Hover Effects */
+@media (hover: hover) and (pointer: fine) {
+    .cert-card.revealed:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: var(--shadow-hover);
+        z-index: 10;
+        position: relative;
+    }
+}
+
+/* --- Lightbox Modal --- */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    
+    /* Dark blurred backdrop */
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Hidden state */
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+.lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    
+    /* FLIP animation base styles handled in JS, but ensure smooth transform */
+    will-change: transform, opacity;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .cert-heading {
+        font-size: 2.2rem;
+    }
+    :root {
+        --card-width: 260px;
+        --card-height: 180px;
+    }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .cert-card {
+        transition: none;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .lightbox {
+        transition: none;
+    }
+}

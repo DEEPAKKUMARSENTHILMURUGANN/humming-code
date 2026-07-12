@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepakkumar Senthilmurugan - Portfolio</title>
+    <meta name="description" content="UX Designer Portfolio">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Caveat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="pub-cert.css?v=2">
+</head>
+
+<body>
+
+
+    <!-- Intro Splash Screen -->
+    <div id="intro-overlay">
+        <div class="intro-panel intro-panel-top"></div>
+        <div class="intro-panel intro-panel-bottom"></div>
+        <div id="intro-stage">
+            <div class="intro-clip">
+                <span id="intro-word">Hello</span>
+            </div>
+            <div id="intro-lang-label">English</div>
+        </div>
+        <div id="intro-progress"></div>
+    </div>
+
+    <!-- Background Grid Pattern -->
+    <div class="bg-grid-pattern"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon"></span> Reeni
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">Experience</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="mailto:deepakkumar.senthilmurugann@gmail.com" class="cta-button" id="contact-btn">
+            CONTACT ME
+            <span class="btn-arrow-small">
+                <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </a>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero" id="hero">
+
+                <!-- Left Column -->
+        <div class="hero-left">
+            <p class="hero-hello">I A M</p>
+            <h1 class="hero-name">
+                Deepakkumar Senthilmurugan, an Diploma IT & <span class="highlight-red">BE CSE Student</span>
+            </h1>
+            <p class="hero-desc">
+                An enthusiastic IT graduate pursuing B.E. Computer Science at PSG College of Technology. Passionate
+                about <span class="highlight-red">programming, AI</span>, and networking, balancing academics with
+                strong leadership and volunteering.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="primary-btn view-btn">
+                    READ MORE
+                    <span class="btn-icon">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a>
+                <button id="build-resume-btn" class="pink-pill-btn resume-btn" onclick="startResumeAnimation()">
+                    RESUME
+                </button>
+            </div>
+
+            <div class="hero-social">
+                <span class="social-title">Find me on</span>
+                <div class="social-row">
+                    <a href="https://www.linkedin.com/in/deepakkumarsenthilmurugann/" class="social-icon"
+                        aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+                    <a href="https://github.com/DEEPAKKUMARSENTHILMURUGANN" class="social-icon" aria-label="GitHub"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/__deep_xx_21/" class="social-icon" aria-label="Instagram"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:deepakkumar.senthilmurugann@gmail.com" class="social-icon" aria-label="Email">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column (Visuals) -->
+        <div class="hero-right">
+            <!-- Background big text -->
+            <div class="hero-bg-text">
+                <span class="bg-text-filled">CS E</span><span class="bg-text-outline">ngineer</span>
+            </div>
+
+            <!-- Red Glow Blob -->
+            <div class="hero-glow-blob"></div>
+
+            <!-- Person Image (User's PNG) -->
+            <div class="hero-image-wrap">
+                <img src="images/my_image.png" alt="Deepak Kumar S." class="hero-photo" />
+            </div>
+
+            <!-- Rotating Stamp -->
+            <div class="stamp-container">
+                <svg viewBox="0 0 100 100" class="rotating-stamp">
+                    <path id="stamp-path" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+                        fill="transparent" />
+                    <text>
+                        <textPath href="#stamp-path" startOffset="0" font-size="10" font-weight="600"
+                            letter-spacing="4">
+                            PSG TECH • B.E. CSE •
+                        </textPath>
+                    </text>
+                </svg>
+                <div class="stamp-center">D</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ QUOTE SECTION ============ -->
+    <section class="quote-section gsap-reveal">
+        <h2 class="quote-text">
+            I take pride in balancing academics with <span class="highlight-red">volunteering</span>, teamwork, and
+            leadership. With deep interest in <span class="highlight-red">AI, Networking</span>, and Emerging Tech, I
+            aspire to apply my skills in impactful ways.
+        </h2>
+    </section>
+
+    <!-- ============ TECH STACK MARQUEE ============ -->
+    <section class="tech-marquee-section">
+        <div class="tech-marquee-wrap">
+            <div class="tech-marquee">
+                <!-- Group 1 -->
+                <i class="devicon-python-plain colored"></i>
+                <i class="devicon-javascript-plain colored"></i>
+                <i class="devicon-html5-plain colored"></i>
+                <i class="devicon-css3-plain colored"></i>
+                <i class="devicon-c-plain colored"></i>
+                <i class="devicon-cplusplus-plain colored"></i>
+                <i class="devicon-java-plain colored"></i>
+                <i class="devicon-react-original colored"></i>
+                <i class="devicon-nodejs-plain colored"></i>
+                <i class="devicon-git-plain colored"></i>
+                <i class="devicon-linux-plain colored"></i>
+                <i class="devicon-mysql-plain colored"></i>
+                <!-- Group 2 (Duplicate for infinite loop) -->
+                <i class="devicon-python-plain colored"></i>
+                <i class="devicon-javascript-plain colored"></i>
+                <i class="devicon-html5-plain colored"></i>
+                <i class="devicon-css3-plain colored"></i>
+                <i class="devicon-c-plain colored"></i>
+                <i class="devicon-cplusplus-plain colored"></i>
+                <i class="devicon-java-plain colored"></i>
+                <i class="devicon-react-original colored"></i>
+                <i class="devicon-nodejs-plain colored"></i>
+                <i class="devicon-git-plain colored"></i>
+                <i class="devicon-linux-plain colored"></i>
+                <i class="devicon-mysql-plain colored"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROJECTS SECTION ============ -->
+    <section class="projects-section" id="projects">
+        <div class="contact-bg-text">PROJECTS</div>
+        <div class="projects-header gsap-reveal">
+            <p class="section-desc" style="max-width:600px; margin: 0 auto;">Click any card to explore.</p>
+        </div>
+
+        <div class="scene">
+            <div class="grid-container">
+                <div class="card-wrapper">
+                    <div class="card" data-title="PSG COLLEGE OF TECHNOLOGY" data-desc="Institutional Portal">
+                        <div class="card-inner">
+                            <div class="card-front"><div class="card-content img-1"></div></div>
+                            <div class="card-back"><h3>PSG COLLEGE</h3><p>Institutional Portal<br><br><a href="#" target="_blank" class="github-btn">View</a></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="card" data-title="MODERN LIFE FEUD" data-desc="Game Show">
+                        <div class="card-inner">
+                            <div class="card-front"><div class="card-content img-2"></div></div>
+                            <div class="card-back"><h3>MODERN LIFE FEUD</h3><p>Game Show<br><br><a href="https://github.com/DEEPAKKUMARSENTHILMURUGANN/modernlifefeud" target="_blank" class="github-btn">View on GitHub</a></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="card" data-title="SCHEDULE IT" data-desc="AI Timetable Scheduler">
+                        <div class="card-inner">
+                            <div class="card-front"><div class="card-content img-3"></div></div>
+                            <div class="card-back"><h3>SCHEDULE IT</h3><p>AI Timetable Scheduler<br><br><a href="#" target="_blank" class="github-btn">View</a></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="card" data-title="VERI-CHAIN" data-desc="Govt of Jharkhand">
+                        <div class="card-inner">
+                            <div class="card-front"><div class="card-content img-4"></div></div>
+                            <div class="card-back"><h3>VERI-CHAIN</h3><p>Govt of Jharkhand<br><br><a href="#" target="_blank" class="github-btn">View</a></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="card" data-title="AI DIAGNOSTICS" data-desc="Vehicle Health Monitoring">
+                        <div class="card-inner">
+                            <div class="card-front"><div class="card-content img-5"></div></div>
+                            <div class="card-back"><h3>AI DIAGNOSTICS</h3><p>Vehicle Health Monitoring<br><br><a href="#" target="_blank" class="github-btn">View</a></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="card" data-title="SKYE" data-desc="Cloud Solutions">
+                        <div class="card-inner">
+                            <div class="card-front"><div class="card-content img-6"></div></div>
+                            <div class="card-back"><h3>SKYE</h3><p>Cloud Solutions<br><br><a href="#" target="_blank" class="github-btn">View</a></p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ EXPERIENCE / ABOUT SECTION ============ -->
+    <section class="experience-section" id="about">
+        <div class="contact-bg-text" style="white-space: nowrap;">Experience and clubs</div>
+        <!-- Left Side: Cards -->
+        <div class="exp-left gsap-reveal">
+            <!-- Big background glow -->
+            <div class="exp-glow"></div>
+
+            <div class="glass-card big-card">
+                <img src="images/building_3d.png" alt="College Building" class="building-img" />
+            </div>
+
+            <div class="glass-card small-card logos-card">
+                <div class="club-logo-wrap" data-club="csea">
+                    <img src="images/csea_trans.png" alt="CSEA" />
+                </div>
+                <div class="club-logo-wrap" data-club="brainstrust">
+                    <img src="images/su_logo.png" alt="SU Logo" />
+                </div>
+                <div class="club-logo-wrap" data-club="github">
+                    <img src="images/github_trans.png" alt="GitHub" />
+                </div>
+                <div class="club-logo-wrap" data-club="radio">
+                    <img src="images/radio hub logo.png" alt="Radio Hub" />
+                </div>
+                <div class="club-logo-wrap" data-club="iot">
+                    <img src="images/iot internship.jpg" alt="A-Tech IoT Internship" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Content -->
+        <div class="exp-right gsap-reveal">
+            <!-- Spinning Club Badge (top-right, visible when a club is selected) -->
+            <div id="spin-badge" class="spin-badge hidden">
+                <img id="spin-badge-img" src="" alt="Club Logo" />
+            </div>
+
+            <div id="dynamic-content">
+                <h5 class="section-subtitle">EXPERIENCE & CLUBS</h5>
+                <h2 class="section-title">Building Communities & Innovative Tech</h2>
+                <p class="section-desc">From publishing an article on Generative AI to leading the Brains Trust Club as
+                    Secretary, I actively engage in real-world applications of programming and management.</p>
+
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Internships</h4>
+                            <p>Gained hands-on industry experience in IoT development and applications.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Leadership &amp; Clubs</h4>
+                            <p>Led and organized events across multiple campus communities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ============ ACHIEVEMENTS BLOG SECTION ============ -->
+    <section class="achievements-section" id="achievements">
+        <div class="contact-bg-text"
+            style="font-size: clamp(4rem, 9vw, 20rem); white-space: nowrap; color: rgba(255, 255, 255, 0.1); z-index: -1;">
+            MILESTONES</div>
+        <div class="achievements-header gsap-reveal">
+            <p class="section-desc" style="text-align:center; max-width:500px; margin:0 auto;">Hover to reveal · Click
+                to explore</p>
+        </div>
+
+        <div class="ach-track-wrap">
+            <div class="ach-track">
+
+                <!-- Card 1 -->
+                <div class="ach-card" data-index="0" data-title="Byte & Betrayal" data-tag="CSEA PSG Tech"
+                    data-desc="We did it! 🎉 So proud to announce the successful conduction of our first event after being recruited: 'Byte & Betrayal: Logic Meets Lies' in collaboration with the PSG College of Technology Computer Science and Engineering Association (CSEA PSG Tech)!"
+                    data-img="images/csea event.jpg,images/csea event 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/csea event.jpg" alt="Byte & Betrayal" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">CSEA PSG Tech</span>
+                            <h3>Byte & Betrayal</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="ach-card" data-index="1" data-title="RJ Hunt — Radio Hub" data-tag="Event · Oct 2025"
+                    data-desc="Exciting Milestone! Our Radio Hub Team of 2025 at PSG College of Technology successfully conducted our first event of this academic year 'RJ Hunt' on October 25, 2025! Being part of the preparation was such a great experience."
+                    data-img="images/radio hub.jpg,images/radio hub logo.png">
+                    <div class="ach-img-wrap">
+                        <img src="images/radio hub.jpg" alt="RJ Hunt — Radio Hub" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Event · Oct 2025</span>
+                            <h3>RJ Hunt — Radio Hub</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="ach-card" data-index="2" data-title="AI on the Edge" data-tag="Workshop · IEEE"
+                    data-desc="Had the opportunity to attend a workshop on 'AI on the Edge' organized by the IEEE Students Chapter 12951 at PSG College of Technology, as part of the national-level symposium SRiSHTi. An inspiring and knowledge-rich experience!"
+                    data-img="images/shristi 1.jpg,images/shristi 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/shristi 1.jpg" alt="AI on the Edge" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Workshop · IEEE</span>
+                            <h3>AI on the Edge</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="ach-card" data-index="3" data-title="Teachers Day 2024" data-tag="IT Association"
+                    data-desc="Excited to share that I had the opportunity to be part of the organizing committee for the event conducted by the IT Association in collaboration with SU of PSG Polytechnic College for Teachers day 2024."
+                    data-img="images/enadhu chalk 1.jpg,images/enaku chalk 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/enadhu chalk 1.jpg" alt="Teachers Day 2024" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">IT Association</span>
+                            <h3>Teachers Day 2024</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="ach-card" data-index="4" data-title="Speech at PSG Polytechnic" data-tag="Speech"
+                    data-desc="Honoured to Share My Speech at PSG Polytechnic College. Had the wonderful opportunity to present a speech highlighting the activities of the IT Association of the Students’ Union covering achievements of 2024 and plans for 2025."
+                    data-img="images/presentation dit.jpg,images/presntation of dit.jpg,images/presenation dit 3.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/presentation dit.jpg" alt="Speech at PSG Polytechnic" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Speech</span>
+                            <h3>Speech at PSG Polytechnic</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="ach-card" data-index="5" data-title="Presentation to PSG Tech Crew" data-tag="Presentation"
+                    data-desc="I and Manisha Subramanian had the wonderful opportunity to present in front of the PSG Tech crew, and we are truly humbled to have received appreciation for our presentation. It was an amazing experience to share ideas!"
+                    data-img="images/interact section with dignity panel 1.jpg,images/interact section with dignity panel 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/interact section with dignity panel 1.jpg" alt="Presentation to PSG Tech Crew"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Presentation</span>
+                            <h3>Presentation to PSG Tech Crew</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="ach-card" data-index="6" data-title="IoT Internship" data-tag="A-Tech Computer System"
+                    data-desc="Grateful to share that I have successfully completed my internship at A-Tech Computer System, Coimbatore in the domain of Internet of Things (IoT) from 06 May 2024 to 03 June 2024."
+                    data-img="images/iot internship.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/iot internship.jpg" alt="IoT Internship" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">A-Tech Computer System</span>
+                            <h3>IoT Internship</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="ach-card" data-index="7" data-title="Graduation Day!" data-tag="Diploma in IT"
+                    data-desc="Graduation Day Memories! Feeling incredibly proud to have completed my Diploma in Information Technology at PSG Polytechnic College, Coimbatore. MISS YOU DIT's 🖤"
+                    data-img="images/graduation 2.jpg,images/graduation rh.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/graduation 2.jpg" alt="Graduation Day!" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Diploma in IT</span>
+                            <h3>Graduation Day!</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="ach-card" data-index="8" data-title="Excellent Dynamic Volunteer" data-tag="IT Association"
+                    data-desc="Proud to have been an active member of the IT Association at PSG Polytechnic College throughout all three years of my academic journey. Honored with the 'Excellent Dynamic Volunteer' award for my dedication and contributions."
+                    data-img="images/excellet dynamic volunteer 1.jpg,images/dynamic voluneetr 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/excellet dynamic volunteer 1.jpg" alt="Excellent Dynamic Volunteer"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">IT Association</span>
+                            <h3>Excellent Dynamic Volunteer</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="ach-card" data-index="9" data-title="Secretary — Brains Trust Club" data-tag="Leadership"
+                    data-desc="Honored to have served as the Secretary of the Brains Trust Club under the Students’ Union of PSG Polytechnic College for the academic year 2024–2025. This role helped me enhance my leadership and organizational skills."
+                    data-img="images/BRAINS TRUST SECRETARY.jpg,images/BRAINS TRUST SECRETARY2.jpg,images/BRAINS TRUST SECRETARY3.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/BRAINS TRUST SECRETARY.jpg" alt="Secretary — Brains Trust Club"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Leadership</span>
+                            <h3>Secretary — Brains Trust Club</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="ach-card" data-index="10" data-title="Joint Secretary — Brains Trust Club"
+                    data-tag="Leadership"
+                    data-desc="Served as the Joint Secretary of the Brains Trust Club under the Students’ Union of PSG Polytechnic College, contributing to successful events and developing strong organizational skills."
+                    data-img="images/BRAINS TRUST JOINT SECRETARY1.jpg,images/BRAINS TRUST JOINT SECRETARY2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/BRAINS TRUST JOINT SECRETARY1.jpg" alt="Joint Secretary — Brains Trust Club"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Leadership</span>
+                            <h3>Joint Secretary — Brains Trust Club</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 12 -->
+                <div class="ach-card" data-index="11" data-title="First Prize — TECH VISION 2025" data-tag="Achievement"
+                    data-desc="Proud to share that my teammate Atchaya Kumar.S and I participated in TECH VISION 2025, a State-Level Technical Symposium conducted by Christ the King Polytechnic College. We secured the First Prize 🏆 in the PPT Contest!"
+                    data-img="images/CHRIST.jpg,images/CHRIST2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/CHRIST.jpg" alt="First Prize — TECH VISION 2025" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Achievement</span>
+                            <h3>First Prize — TECH VISION 2025</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 13 -->
+                <div class="ach-card" data-index="12" data-title="Second Prize — HINSPECTRA 2K25" data-tag="Achievement"
+                    data-desc="Participated in HINSPECTRA 2K25, a State-Level Symposium conducted by Hindustan Polytechnic College. We secured the Second Prize 🥈 in the PPT Contest! Our achievement was proudly featured in The Kovai Mail."
+                    data-img="images/HINDUS 1.jpg,images/HINDUS2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/HINDUS 1.jpg" alt="Second Prize — HINSPECTRA 2K25" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Achievement</span>
+                            <h3>Second Prize — HINSPECTRA 2K25</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 14 -->
+                <div class="ach-card" data-index="13" data-title="Third Place — Paper Presentation"
+                    data-tag="Achievement"
+                    data-desc="Participated in the One-Day Paper Presentation for Polytechnic Students organized by Sri Ramakrishna Engineering College, Coimbatore. We are delighted to have secured the 3rd Place 🥉 in this event!"
+                    data-img="images/RAMAKRISHNA1.jpg,images/RAMAKRISHNA2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/RAMAKRISHNA1.jpg" alt="Third Place — Paper Presentation" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Achievement</span>
+                            <h3>Third Place — Paper Presentation</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 15 -->
+                <div class="ach-card" data-index="14" data-title="Robotics and AI Workshop" data-tag="Workshop"
+                    data-desc="Thrilled to share that I have successfully completed the 'Unlocking the Future with Robotics and AI' workshop held on 30th August 2024 at PSG Polytechnic College, certified by i-Robochakra. It was an incredible learning experience exploring how these technologies are shaping the future. Grateful for the insights and hands-on knowledge gained!"
+                    data-img="images/robo chakra 1.jpg,images/robo chakra 2.jpg,images/robochakra 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/robo chakra 1.jpg" alt="Robotics and AI Workshop" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Workshop</span>
+                            <h3>Robotics and AI Workshop</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 1 (Duplicated) -->
+                <div class="ach-card" data-index="0" data-title="Byte & Betrayal" data-tag="CSEA PSG Tech"
+                    data-desc="We did it! 🎉 So proud to announce the successful conduction of our first event after being recruited: 'Byte & Betrayal: Logic Meets Lies' in collaboration with the PSG College of Technology Computer Science and Engineering Association (CSEA PSG Tech)!"
+                    data-img="images/csea event.jpg,images/csea event 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/csea event.jpg" alt="Byte & Betrayal" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">CSEA PSG Tech</span>
+                            <h3>Byte & Betrayal</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Duplicated) -->
+                <div class="ach-card" data-index="1" data-title="RJ Hunt — Radio Hub" data-tag="Event · Oct 2025"
+                    data-desc="Exciting Milestone! Our Radio Hub Team of 2025 at PSG College of Technology successfully conducted our first event of this academic year 'RJ Hunt' on October 25, 2025! Being part of the preparation was such a great experience."
+                    data-img="images/radio hub.jpg,images/radio hub logo.png">
+                    <div class="ach-img-wrap">
+                        <img src="images/radio hub.jpg" alt="RJ Hunt — Radio Hub" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Event · Oct 2025</span>
+                            <h3>RJ Hunt — Radio Hub</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Duplicated) -->
+                <div class="ach-card" data-index="2" data-title="AI on the Edge" data-tag="Workshop · IEEE"
+                    data-desc="Had the opportunity to attend a workshop on 'AI on the Edge' organized by the IEEE Students Chapter 12951 at PSG College of Technology, as part of the national-level symposium SRiSHTi. An inspiring and knowledge-rich experience!"
+                    data-img="images/shristi 1.jpg,images/shristi 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/shristi 1.jpg" alt="AI on the Edge" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Workshop · IEEE</span>
+                            <h3>AI on the Edge</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 (Duplicated) -->
+                <div class="ach-card" data-index="3" data-title="Teachers Day 2024" data-tag="IT Association"
+                    data-desc="Excited to share that I had the opportunity to be part of the organizing committee for the event conducted by the IT Association in collaboration with SU of PSG Polytechnic College for Teachers day 2024."
+                    data-img="images/enadhu chalk 1.jpg,images/enaku chalk 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/enadhu chalk 1.jpg" alt="Teachers Day 2024" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">IT Association</span>
+                            <h3>Teachers Day 2024</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Duplicated) -->
+                <div class="ach-card" data-index="4" data-title="Speech at PSG Polytechnic" data-tag="Speech"
+                    data-desc="Honoured to Share My Speech at PSG Polytechnic College. Had the wonderful opportunity to present a speech highlighting the activities of the IT Association of the Students’ Union covering achievements of 2024 and plans for 2025."
+                    data-img="images/presentation dit.jpg,images/presntation of dit.jpg,images/presenation dit 3.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/presentation dit.jpg" alt="Speech at PSG Polytechnic" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Speech</span>
+                            <h3>Speech at PSG Polytechnic</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 (Duplicated) -->
+                <div class="ach-card" data-index="5" data-title="Presentation to PSG Tech Crew" data-tag="Presentation"
+                    data-desc="I and Manisha Subramanian had the wonderful opportunity to present in front of the PSG Tech crew, and we are truly humbled to have received appreciation for our presentation. It was an amazing experience to share ideas!"
+                    data-img="images/interact section with dignity panel 1.jpg,images/interact section with dignity panel 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/interact section with dignity panel 1.jpg" alt="Presentation to PSG Tech Crew"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Presentation</span>
+                            <h3>Presentation to PSG Tech Crew</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 (Duplicated) -->
+                <div class="ach-card" data-index="6" data-title="IoT Internship" data-tag="A-Tech Computer System"
+                    data-desc="Grateful to share that I have successfully completed my internship at A-Tech Computer System, Coimbatore in the domain of Internet of Things (IoT) from 06 May 2024 to 03 June 2024."
+                    data-img="images/iot internship.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/iot internship.jpg" alt="IoT Internship" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">A-Tech Computer System</span>
+                            <h3>IoT Internship</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 (Duplicated) -->
+                <div class="ach-card" data-index="7" data-title="Graduation Day!" data-tag="Diploma in IT"
+                    data-desc="Graduation Day Memories! Feeling incredibly proud to have completed my Diploma in Information Technology at PSG Polytechnic College, Coimbatore. MISS YOU DIT's 🖤"
+                    data-img="images/graduation 2.jpg,images/graduation rh.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/graduation 2.jpg" alt="Graduation Day!" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Diploma in IT</span>
+                            <h3>Graduation Day!</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 (Duplicated) -->
+                <div class="ach-card" data-index="8" data-title="Excellent Dynamic Volunteer" data-tag="IT Association"
+                    data-desc="Proud to have been an active member of the IT Association at PSG Polytechnic College throughout all three years of my academic journey. Honored with the 'Excellent Dynamic Volunteer' award for my dedication and contributions."
+                    data-img="images/excellet dynamic volunteer 1.jpg,images/dynamic voluneetr 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/excellet dynamic volunteer 1.jpg" alt="Excellent Dynamic Volunteer"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">IT Association</span>
+                            <h3>Excellent Dynamic Volunteer</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 (Duplicated) -->
+                <div class="ach-card" data-index="9" data-title="Secretary — Brains Trust Club" data-tag="Leadership"
+                    data-desc="Honored to have served as the Secretary of the Brains Trust Club under the Students’ Union of PSG Polytechnic College for the academic year 2024–2025. This role helped me enhance my leadership and organizational skills."
+                    data-img="images/BRAINS TRUST SECRETARY.jpg,images/BRAINS TRUST SECRETARY2.jpg,images/BRAINS TRUST SECRETARY3.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/BRAINS TRUST SECRETARY.jpg" alt="Secretary — Brains Trust Club"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Leadership</span>
+                            <h3>Secretary — Brains Trust Club</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11 (Duplicated) -->
+                <div class="ach-card" data-index="10" data-title="Joint Secretary — Brains Trust Club"
+                    data-tag="Leadership"
+                    data-desc="Served as the Joint Secretary of the Brains Trust Club under the Students’ Union of PSG Polytechnic College, contributing to successful events and developing strong organizational skills."
+                    data-img="images/BRAINS TRUST JOINT SECRETARY1.jpg,images/BRAINS TRUST JOINT SECRETARY2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/BRAINS TRUST JOINT SECRETARY1.jpg" alt="Joint Secretary — Brains Trust Club"
+                            loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Leadership</span>
+                            <h3>Joint Secretary — Brains Trust Club</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 12 (Duplicated) -->
+                <div class="ach-card" data-index="11" data-title="First Prize — TECH VISION 2025" data-tag="Achievement"
+                    data-desc="Proud to share that my teammate Atchaya Kumar.S and I participated in TECH VISION 2025, a State-Level Technical Symposium conducted by Christ the King Polytechnic College. We secured the First Prize 🏆 in the PPT Contest!"
+                    data-img="images/CHRIST.jpg,images/CHRIST2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/CHRIST.jpg" alt="First Prize — TECH VISION 2025" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Achievement</span>
+                            <h3>First Prize — TECH VISION 2025</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 13 (Duplicated) -->
+                <div class="ach-card" data-index="12" data-title="Second Prize — HINSPECTRA 2K25" data-tag="Achievement"
+                    data-desc="Participated in HINSPECTRA 2K25, a State-Level Symposium conducted by Hindustan Polytechnic College. We secured the Second Prize 🥈 in the PPT Contest! Our achievement was proudly featured in The Kovai Mail."
+                    data-img="images/HINDUS 1.jpg,images/HINDUS2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/HINDUS 1.jpg" alt="Second Prize — HINSPECTRA 2K25" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Achievement</span>
+                            <h3>Second Prize — HINSPECTRA 2K25</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 14 (Duplicated) -->
+                <div class="ach-card" data-index="13" data-title="Third Place — Paper Presentation"
+                    data-tag="Achievement"
+                    data-desc="Participated in the One-Day Paper Presentation for Polytechnic Students organized by Sri Ramakrishna Engineering College, Coimbatore. We are delighted to have secured the 3rd Place 🥉 in this event!"
+                    data-img="images/RAMAKRISHNA1.jpg,images/RAMAKRISHNA2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/RAMAKRISHNA1.jpg" alt="Third Place — Paper Presentation" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Achievement</span>
+                            <h3>Third Place — Paper Presentation</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 15 (Duplicated) -->
+                <div class="ach-card" data-index="14" data-title="Robotics and AI Workshop" data-tag="Workshop"
+                    data-desc="Thrilled to share that I have successfully completed the 'Unlocking the Future with Robotics and AI' workshop held on 30th August 2024 at PSG Polytechnic College, certified by i-Robochakra. It was an incredible learning experience exploring how these technologies are shaping the future. Grateful for the insights and hands-on knowledge gained!"
+                    data-img="images/robo chakra 1.jpg,images/robo chakra 2.jpg,images/robochakra 2.jpg">
+                    <div class="ach-img-wrap">
+                        <img src="images/robo chakra 1.jpg" alt="Robotics and AI Workshop" loading="lazy" />
+                        <div class="ach-overlay-label"><span class="ach-tag">Workshop</span>
+                            <h3>Robotics and AI Workshop</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PUBLICATIONS SECTION ============ -->
+    <section class="publications-section crt-view" id="publications">
+        <div class="contact-bg-text"
+            style="font-size: clamp(5rem, 11vw, 20rem); white-space: nowrap; color: rgba(255, 255, 255, 0.1); z-index: -1;">
+            PUBLICATION</div>
+
+        <div class="pub-layout-container gsap-reveal">
+
+            <!-- Left Side: Main Book Mockup -->
+            <div class="pub-main-book">
+                <!-- The scene provides perspective -->
+                <div class="book-scene" id="book-scene">
+                    <!-- The book floats and tilts (JS controls this) -->
+                    <div class="book-float" id="book-float">
+                        <!-- The book body: everything 3D inside here -->
+                        <div class="book-body">
+
+                            <!-- COVER PAGE — flips open on click -->
+                            <div class="book-cover" id="book-cover">
+                                <!-- Front face: the cover image -->
+                                <div class="book-cover-front">
+                                    <img src="genlearn_cover.png" alt="GenLearn Cover" class="cover-img">
+                                    <!-- Spine highlight glow -->
+                                    <div class="spine-glow"></div>
+                                </div>
+                                <!-- Back face: inside of the cover (cream/paper colour) -->
+                                <div class="book-cover-back"></div>
+                            </div>
+
+                            <!-- INSIDE PAGE — revealed after cover flips -->
+                            <div class="book-inside">
+                                <div class="book-inside-content">
+                                    <h2 class="page-heading">5. IMPLEMENTATION</h2>
+                                    <p>The front-end focuses on a user-friendly interface. HTML/CSS structure the application, JavaScript frameworks create dynamic UIs, and WebGL/Three.js render 3D graphics in the browser.</p>
+                                    <h2 class="page-heading">CONCLUSION</h2>
+                                    <p>The system enables multi-modal inputs for diverse learning styles. Its generative AI engine processes queries and produces contextually relevant 3D models, making complex topics accessible.</p>
+                                    <!-- Tap-to-close hint -->
+                                    <p class="close-hint">↩ tap to close</p>
+                                </div>
+                            </div>
+
+                            <!-- Book spine thickness effect -->
+                            <div class="book-spine"></div>
+                            <!-- Book bottom edge -->
+                            <div class="book-bottom-edge"></div>
+                            <!-- Drop shadow -->
+                            <div class="book-drop-shadow" id="book-drop-shadow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Right Side: Certificates Panel -->
+        <div class="pub-cert-side">
+            <h2 class="pub-cert-title">Certifications</h2>
+            <div class="cert-scroll-viewport" id="cert-scroll-viewport">
+                <div class="cert-scroll-track" id="cert-scroll-track">
+                    <button class="cert-item" aria-label="View Certification"><img src="images/RAMAKRISHNA CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
+                    <button class="cert-item" aria-label="View Certification"><img src="images/SCALER CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
+                    <button class="cert-item" aria-label="View Certification"><img src="images/CHRIST CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
+                    <button class="cert-item" aria-label="View Certification"><img src="images/SCALER 2 CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
+                    <button class="cert-item" aria-label="View Certification"><img src="images/SHRIST CERTIFICATE IMAGE.jpg" alt="Certificate" loading="lazy"></button>
+                    <button class="cert-item" aria-label="View Certification"><img src="images/SCALER 3 CERTIFICATE.jpg" alt="Certificate" loading="lazy"></button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End pub-layout-container -->
+</section>
+<!-- ============ CONTACT SECTION ============ -->
+    <section class="contact-section" id="contact">
+        <div class="contact-bg-text">CONTACT</div>
+
+        <div class="mac-window-wrapper gsap-reveal">
+            <div class="mac-window">
+                <!-- Top Bar -->
+                <div class="mac-topbar">
+                    <div class="mac-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="mac-title">+</div>
+                </div>
+
+                <!-- Window Content -->
+                <div class="mac-content">
+                    <h1 class="mac-glow-title" style="text-align: center; margin-bottom: 4rem;">
+                        Let's build products,<br>
+                        interactions & <span class="mac-italic">stories.</span>
+                    </h1>
+
+                    <div class="contact-container" style="gap: 3rem;">
+                        <!-- Left Side -->
+                        <div class="contact-left">
+                            <h2 class="contact-title" style="font-size: 2.5rem;">Get in touch</h2>
+                            <p class="contact-desc">Have questions or ready to transform your ideas into reality? Let's
+                                talk.</p>
+
+                            <div class="contact-info-cards">
+                                <a href="mailto:deepakkumar.senthilmurugann@gmail.com" class="info-card">
+                                    <div class="info-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <path
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                            <polyline points="22,6 12,13 2,6" />
+                                        </svg>
+                                    </div>
+                                    <div class="info-text">
+                                        <h4>Email us</h4>
+                                        <p>deepakkumar.senthilmurugann@gmail.com</p>
+                                    </div>
+                                    <div class="info-arrow">↗</div>
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/deepakkumarsenthilmurugann/" target="_blank" rel="noopener" class="info-card">
+                                    <div class="info-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                            <rect x="2" y="9" width="4" height="12"></rect>
+                                            <circle cx="4" cy="4" r="2"></circle>
+                                        </svg>
+                                    </div>
+                                    <div class="info-text">
+                                        <h4>LinkedIn</h4>
+                                        <p>Connect with me</p>
+                                    </div>
+                                    <div class="info-arrow">↗</div>
+                                </a>
+
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg>
+                                    </div>
+                                    <div class="info-text">
+                                        <h4>Our location</h4>
+                                        <p>Coimbatore</p>
+                                    </div>
+                                    <div class="info-arrow">↗</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Side Form -->
+                        <div class="contact-right">
+                            <form class="contact-form">
+                                <input type="text" placeholder="Name" required />
+                                <input type="email" placeholder="Email" required />
+                                <textarea placeholder="Message" rows="5" required></textarea>
+                                <button type="submit" class="submit-btn">Submit</button>
+                                <button type="button" class="resume-trigger-btn" onclick="startResumeAnimation()">Resume</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empty Sections to allow scrolling as requested -->
+    <section id="empty-1" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+        <h2 style="color: #666; font-family: 'Inter', sans-serif;">Empty Section 1</h2>
+    </section>
+    <section id="empty-2" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+        <h2 style="color: #666; font-family: 'Inter', sans-serif;">Empty Section 2</h2>
+    </section>
+    <section id="empty-3" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+        <h2 style="color: #666; font-family: 'Inter', sans-serif;">Empty Section 3</h2>
+    </section>
+    <section id="empty-4" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+        <h2 style="color: #666; font-family: 'Inter', sans-serif;">Empty Section 4</h2>
+    </section>
+    <section id="empty-5" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <h2 style="color: #666; font-family: 'Inter', sans-serif;">Empty Section 5</h2>
+    </section>
+
+    <!-- Libraries -->
+    <script src="libs/gsap.min.js"></script>
+    <script src="libs/ScrollTrigger.min.js"></script>
+    <script src="libs/lenis.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="intro.js"></script>
+    <script src="script.js?v=11"></script>
+    <script src="cert-slider.js?v=1"></script>
+
+    <!-- Achievements Modal -->
+    <div id="achModal" class="ach-modal">
+        <div class="ach-modal-inner">
+            <button class="ach-close-btn" id="achCloseBtn">&times;</button>
+            <div class="ach-modal-img-wrap" style="position: relative;">
+                <img id="achModalImg" src="" alt="Achievement" />
+                <button id="achPrevBtn" class="ach-nav-btn prev-btn" style="display:none;">&#10094;</button>
+                <button id="achNextBtn" class="ach-nav-btn next-btn" style="display:none;">&#10095;</button>
+                <div id="achDots" class="ach-dots" style="display:none;"></div>
+            </div>
+            <div class="ach-modal-content">
+                <span class="ach-modal-tag" id="achModalTag"></span>
+                <h3 class="ach-modal-title" id="achModalTitle"></h3>
+                <p class="ach-modal-desc" id="achModalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal Overlay -->
+    <div class="modal-overlay">
+        <button class="close-btn">&times;</button>
+    </div>
+    <div class="active-card-container"></div>
+
+    <!-- Certificates Modal -->
+    <div id="certModal" class="cert-modal">
+        <div class="cert-modal-inner">
+            <button class="cert-close-btn" id="certCloseBtn" onclick="closeCertModal()">&times;</button>
+            <img id="certModalImg" src="" alt="Certificate" />
+        </div>
+    </div>
+
+    <!-- Fullscreen Lightbox Modal for Certifications -->
+    <div class="cert-lightbox" id="cert-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+        <button class="cert-lightbox-close" id="cert-lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <div class="cert-lightbox-content">
+            <img src="" alt="Expanded Certificate" id="cert-lightbox-img">
+        </div>
+    </div>
+
+    
+    <script src="cert-slider.js?v=2"></script>
+    <script src="projects.js" defer></script>    <script src="pub-book.js"></script>
+</body>
+</html>
