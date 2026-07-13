@@ -717,20 +717,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.ach-track');
     
     if (trackWrap && track) {
-        // Clone cards for infinite effect
         const cards = Array.from(track.children);
-        cards.forEach(card => {
-            const clone = card.cloneNode(true);
-            track.appendChild(clone);
-        });
+        
+        // Calculate the exact width of one original set including gaps
+        // card.offsetWidth doesn't include the gap, so we get the gap from the track
+        const gap = parseFloat(getComputedStyle(track).gap) || 32; // fallback to 32px (2rem)
+        const cardWidth = cards[0].offsetWidth || 380; // fallback to 380px
+        const setWidth = (cardWidth + gap) * cards.length;
+        
+        // Set the CSS variable for the exact translation distance
+        track.style.setProperty('--scroll-width', `-${setWidth}px`);
+
+        // Clone cards multiple times to ensure enough content for ultra-wide screens
+        for (let i = 0; i < 4; i++) {
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                track.appendChild(clone);
+            });
+        }
 
         let scrollAmount = 0;
         let isHovered = false;
 
         trackWrap.addEventListener('mouseenter', () => isHovered = true);
         trackWrap.addEventListener('mouseleave', () => isHovered = false);
-
-        
     }
 });
 

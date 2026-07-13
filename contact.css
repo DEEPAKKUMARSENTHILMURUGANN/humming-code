@@ -5,6 +5,7 @@
 .contact-section {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 6rem 5%;
@@ -13,6 +14,17 @@
     overflow: hidden;
     margin-top: -2px; /* close any sub-pixel gap */
 }
+
+.contact-section .contact-bg-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-bottom: 2rem;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 248, 220, 0.3), 0 0 20px rgba(255, 248, 220, 0.15);
+}
+
 
 /* Fade in from the pub section's colour at the top */
 .contact-section::before {

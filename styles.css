@@ -317,6 +317,7 @@ body {
 .publications-section .contact-bg-text {
     top: 2rem;
     transform: translateX(-50%);
+    text-shadow: 0 0 10px rgba(255, 248, 220, 0.3), 0 0 20px rgba(255, 248, 220, 0.15);
     font-size: clamp(5rem, 12vw, 14rem);
     letter-spacing: -4px;
     color: rgba(255, 255, 255, 0.08);
@@ -1631,7 +1632,7 @@ body {
 }
 @keyframes scroll-milestones {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 1rem)); }
+    100% { transform: translateX(var(--scroll-width)); }
 }
 /* Achievements Modal */
 .ach-modal {
