@@ -956,10 +956,12 @@
 
                     <!-- RIGHT: Contact form -->
                     <div class="contact-form-col">
-                        <input type="text" id="contact-name" placeholder="Name" required />
-                        <input type="email" id="contact-email" placeholder="Email" required />
-                        <textarea id="contact-message" placeholder="Message" rows="4" required></textarea>
-                        <button type="button" class="contact-submit-btn" id="contact-submit-btn" onclick="handleContactSubmit()">Submit</button>
+                        <form id="contact-form">
+                            <input type="text" id="contact-name" placeholder="Name" required />
+                            <input type="email" id="contact-email" placeholder="Email" required />
+                            <textarea id="contact-message" placeholder="Message" rows="4" required></textarea>
+                            <button type="submit" class="contact-submit-btn" id="contact-submit-btn">Submit</button>
+                        </form>
                         <button type="button" class="contact-resume-btn" onclick="window.startVortexAnimation()">Resume</button>
                     </div>
 
@@ -1029,76 +1031,82 @@
     // Paste your Web App URL here:
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz2Ba6wBgdArNKDMozZdFk5ZEOcG86YBKWZ6JEW61Odjwa2cxTxdCVHz72ybB3-NWJT/exec';
     
-    function handleContactSubmit() {
-        console.log('Submit button clicked');
-        const name = document.getElementById('contact-name').value.trim();
-        const email = document.getElementById('contact-email').value.trim();
-        const message = document.getElementById('contact-message').value.trim();
-        const btn = document.getElementById('contact-submit-btn');
-        
-        console.log('Name:', name, 'Email:', email, 'Message:', message);
-        
-        if (!name || !email || !message) {
-            console.log('Form validation failed');
-            btn.textContent = 'Fill all fields!';
-            btn.style.background = 'linear-gradient(135deg, #ff6600, #cc3300)';
-            setTimeout(() => {
-                btn.textContent = 'Submit';
-                btn.style.background = '';
-            }, 2000);
-            return;
-        }
-        
-        // Disable button and show loading state
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        btn.style.background = 'linear-gradient(135deg, #6b7280, #4b5563)';
-        
-        // Prepare JSON payload
-        const payload = {
-            name: name,
-            email: email,
-            message: message
-        };
-        
-        console.log('Sending POST request to:', WEB_APP_URL);
-        console.log('Payload:', payload);
-        
-        // Send POST request to Google Apps Script Web App
-        fetch(WEB_APP_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        })
-        .then(response => {
-            console.log('Response received (no-cors mode)', response);
-            // Show success message
-            btn.textContent = 'Sent! ✓';
-            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-            
-            // Clear form after delay
-            setTimeout(() => {
-                btn.textContent = 'Submit';
-                btn.style.background = '';
-                btn.disabled = false;
-                document.getElementById('contact-name').value = '';
-                document.getElementById('contact-email').value = '';
-                document.getElementById('contact-message').value = '';
-            }, 2500);
-        })
-        .catch(error => {
-            console.error('Error sending message:', error);
-            btn.textContent = 'Error! Try again';
-            btn.style.background = 'linear-gradient(135deg, #ff6600, #cc3300)';
-            btn.disabled = false;
-            
-            setTimeout(() => {
-                btn.textContent = 'Submit';
-                btn.style.background = '';
-            }, 2000);
+    const contactForm = document.querySelector('form#contact-form');
+    const contactBtn = document.getElementById('contact-submit-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Submit button clicked, compiling portfolio payload...');
+
+            const inputName = document.getElementById('contact-name').value.trim();
+            const inputEmail = document.getElementById('contact-email').value.trim();
+            const inputMessage = document.getElementById('contact-message').value.trim();
+
+            if (!inputName || !inputEmail || !inputMessage) {
+                console.log('Form validation failed');
+                if (contactBtn) {
+                    contactBtn.textContent = 'Fill all fields!';
+                    contactBtn.style.background = 'linear-gradient(135deg, #ff6600, #cc3300)';
+                    setTimeout(() => {
+                        contactBtn.textContent = 'Submit';
+                        contactBtn.style.background = '';
+                    }, 2000);
+                }
+                return;
+            }
+
+            if (contactBtn) {
+                contactBtn.disabled = true;
+                contactBtn.textContent = 'Sending...';
+                contactBtn.style.background = 'linear-gradient(135deg, #6b7280, #4b5563)';
+            }
+
+            const webAppUrl = WEB_APP_URL;
+            console.log('Sending POST request to your personal Google Sheet pipeline...');
+
+            fetch(webAppUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify({
+                    name: inputName,
+                    email: inputEmail,
+                    message: inputMessage
+                })
+            })
+            .then(() => {
+                console.log('Data successfully dispatched to Google Sheets!');
+                alert('Thank you! Your message has been sent successfully.');
+
+                if (contactBtn) {
+                    contactBtn.textContent = 'Sent! ✓';
+                    contactBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                }
+
+                setTimeout(() => {
+                    if (contactBtn) {
+                        contactBtn.textContent = 'Submit';
+                        contactBtn.style.background = '';
+                        contactBtn.disabled = false;
+                    }
+                    contactForm.reset();
+                }, 2500);
+            })
+            .catch((err) => {
+                console.error('Critical error dispatching data packet:', err);
+                if (contactBtn) {
+                    contactBtn.textContent = 'Error! Try again';
+                    contactBtn.style.background = 'linear-gradient(135deg, #ff6600, #cc3300)';
+                    contactBtn.disabled = false;
+                    setTimeout(() => {
+                        contactBtn.textContent = 'Submit';
+                        contactBtn.style.background = '';
+                    }, 2000);
+                }
+            });
         });
     }
     </script>
