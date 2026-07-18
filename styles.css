@@ -342,14 +342,16 @@ body {
     z-index: 2;
     width: 85%;
     max-width: 500px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 .hero-photo {
     width: 100%;
     height: auto;
     display: block;
-    /* Mask the bottom to fade into background */
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
-    mask-image: linear-gradient(to top, transparent 0%, black 20%);
+    /* Mask the bottom to fade into background and hide watermark */
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, transparent 5%, black 25%);
+    mask-image: linear-gradient(to top, transparent 0%, transparent 5%, black 25%);
 }
 
 .stamp-container {
@@ -408,7 +410,7 @@ body {
     text-align: center;
 }
 .projects-header {
-    margin: 180px auto -150px auto;
+    margin: 100px auto -180px auto;
     position: relative;
     z-index: 5;
 }
@@ -503,8 +505,8 @@ body {
     z-index: 2000;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-top: 80px;
+    align-items: flex-start;
+    padding-top: 40px;
     box-sizing: border-box;
     perspective: 2000px;
 }
@@ -515,7 +517,7 @@ body {
     width: 320px; 
     height: 450px;
     max-width: 85vw;
-    max-height: 70vh;
+    max-height: 80vh;
 }
 .active-card-container .card.is-flipped .card-inner { transform: rotateY(180deg); }
 .modal-overlay {

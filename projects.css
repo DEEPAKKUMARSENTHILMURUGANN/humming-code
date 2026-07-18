@@ -56,7 +56,7 @@ body {
 /* 3D Scene */
 .scene {
     width: 100%;
-    min-height: 800px;
+    min-height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,13 +131,40 @@ body {
     background: #121212;
     border: 1px solid rgba(255,255,255,0.08);
     transform: rotateY(180deg);
-    padding: 2rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-back-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.card-back-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-back h3 {
@@ -165,7 +192,7 @@ body {
 .img-3 { background-image: url('images/SCHEDULIX TIMETABLER PROJECT CARD IMAGE.jpg'); }
 .img-4 { background-image: url('images/VERICHAIN PROJECT CARD IMAGE.jpg'); }
 .img-5 { background-image: url('images/SKYE PROJECT CARD IMAGE.png'); }
-.img-6 { background-image: url('images/SKYE PROJECT CARD IMAGE.png'); }
+.img-6 { background-image: url('images/JETT PROJECT CARD.jpg'); }
 
 /* Add mock title text onto the front of cards */
 .card-front::after {
@@ -324,6 +351,8 @@ body {
     height: 400px;
 }
 .active-card-container .card-back {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -331,6 +360,7 @@ body {
     background: rgba(10, 10, 15, 0.98);
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
 }
 .active-card-container .card-back h3 {
     font-size: 2.5rem;

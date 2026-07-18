@@ -51,9 +51,13 @@
     flex: 0 0 40%;
     max-width: 40%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
+    padding-bottom: 1rem;
+    position: relative;
+    overflow: visible;
 }
 
 /* Scene: provides perspective depth for the whole book */
@@ -744,6 +748,31 @@
     text-align: center;
 }
 
+.bp-pub-btn {
+    display: block;
+    margin: 0.6rem auto 0;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.55rem;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #fff;
+    background: linear-gradient(135deg, #c0392b, #922b21);
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    width: fit-content;
+}
+.bp-pub-btn:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+
 /* Page Navigation Arrows */
 .bp-nav-arrows {
     position: absolute;
@@ -828,4 +857,32 @@
     .cert-lightbox {
         transition: none;
     }
+}
+
+/* ── Tap to open label — below the book ── */
+.tap-to-open-below {
+    position: static;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    white-space: nowrap;
+    transform: rotate(-3deg);
+    display: block;
+    animation: tap-pulse 2.2s ease-in-out infinite;
+}
+
+/* Hide label when book is open — overrides animation-driven opacity */
+#book-scene:has(.book-is-open) ~ #tap-to-open-text {
+    opacity: 0 !important;
+    animation: none !important;
+}
+
+@keyframes tap-pulse {
+    0%, 100% { opacity: 0.85; transform: rotate(-3deg) translateY(0); }
+    50%       { opacity: 1;    transform: rotate(-3deg) translateY(-5px); }
 }
