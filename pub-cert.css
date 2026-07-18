@@ -415,8 +415,8 @@
     left: -14px;
     width: 14px;
     height: calc(100% - 4px);
-    background: linear-gradient(to right, #2a1f0e, #4a3525);
-    transform-origin: right center;
+    text-shadow: 0 0 14px rgba(255, 248, 220, 0.55), 0 0 28px rgba(255, 248, 220, 0.28);
+    color: rgba(255, 255, 255, 0.18);
     transform: rotateY(-90deg);
     border-radius: 3px 0 0 3px;
     box-shadow: inset -3px 0 8px rgba(0,0,0,0.4);
@@ -602,6 +602,8 @@
     top: 2rem;
     right: 2rem;
     background: none;
+        color: rgba(255, 255, 255, 0.26);
+        text-shadow: 0 0 10px rgba(255, 248, 220, 0.6), 0 0 20px rgba(255, 248, 220, 0.35);
     border: none;
     color: white;
     font-size: 3rem;
@@ -841,6 +843,35 @@
     .book-scene {
         width: 220px;
         height: 300px;
+    }
+
+    .publications-section {
+        padding: 10rem 5% 0;
+        background: radial-gradient(circle at top left, #1a1a1a 0%, #050505 100%);
+    }
+
+    .publications-section::before {
+        background: linear-gradient(to bottom, #050505 0%, transparent 100%);
+    }
+
+    .publications-section::after {
+        background: linear-gradient(to bottom, transparent 0%, #0a0a0a 100%);
+    }
+
+    .pub-cert-side {
+        background: #232327;
+        border-color: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 0 24px rgba(255,255,255,0.05);
+    }
+
+    .pub-cert-title {
+        color: #fff7ef;
+        text-shadow: 0 0 12px rgba(255,255,255,0.08);
+    }
+
+    .cert-item img {
+        opacity: 0.95;
+        filter: grayscale(20%);
     }
 }
 

@@ -396,3 +396,42 @@ body {
     box-shadow: 0 6px 20px rgba(255, 51, 51, 0.6);
     color: white;
 }
+
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 3rem 0.75rem 4.5rem;
+    }
+
+    .projects-header {
+        margin: 0 auto 1rem;
+    }
+
+    .scene {
+        min-height: 500px;
+        height: 500px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .grid-container {
+        width: max-content;
+        grid-template-columns: repeat(3, 150px);
+        gap: 14px;
+        transform: scale(0.55) rotateX(55deg) rotateZ(-45deg);
+        transform-origin: center center;
+        margin: 0 auto;
+    }
+
+    .card-wrapper {
+        width: 150px;
+        height: 210px;
+    }
+
+    .card {
+        height: 100%;
+    }
+
+    .card-back-content {
+        padding: 1.25rem;
+    }
+}
