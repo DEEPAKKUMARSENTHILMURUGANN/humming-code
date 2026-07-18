@@ -1028,16 +1028,14 @@
     <script src="vortex-resume.js"></script>
     <script>
     // ===== GOOGLE APPS SCRIPT WEB APP CONFIGURATION =====
-    // Paste your Web App URL here:
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz2Ba6wBgdArNKDMozZdFk5ZEOcG86YBKWZ6JEW61Odjwa2cxTxdCVHz72ybB3-NWJT/exec';
-    
-    const contactForm = document.querySelector('form#contact-form');
+
+    const contactForm = document.getElementById('contact-form');
     const contactBtn = document.getElementById('contact-submit-btn');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('Submit button clicked, compiling portfolio payload...');
 
             const inputName = document.getElementById('contact-name').value.trim();
             const inputEmail = document.getElementById('contact-email').value.trim();
