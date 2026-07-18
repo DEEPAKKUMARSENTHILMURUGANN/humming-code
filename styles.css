@@ -252,7 +252,8 @@ body {
 
 .hero-bg-text {
     position: absolute;
-    top: 30%; left: 65%; /* Shifted right to prevent overlap with left text */
+    top: 30%;
+    left: 65%; /* Shifted right to prevent overlap with left text */
     transform: translate(-50%, -50%);
     font-size: clamp(6rem, 12vw, 12rem);
     font-weight: 900;
