@@ -501,34 +501,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let lastHoverTime = 0;
+        const selectSoundPath = 'Sound/select sound.mp3';
 
         function playHoverSound() {
-            if (!audioUnlocked || !audioCtx) return;
-            
-            // Throttle to prevent spamming sounds if moving mouse rapidly
+            if (!audioUnlocked) return;
+
             const now = Date.now();
-            if (now - lastHoverTime < 40) return;
+            if (now - lastHoverTime < 80) return;
             lastHoverTime = now;
-            
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            
-            // Slight lookahead ensures precise audio scheduling even if main thread is busy
-            const t = audioCtx.currentTime + 0.015;
-            
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(800, t);
-            osc.frequency.exponentialRampToValueAtTime(300, t + 0.05);
-            
-            // Increased volume by 10x
-            gainNode.gain.setValueAtTime(1.5, t);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.05);
-            
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            
-            osc.start(t);
-            osc.stop(t + 0.05);
+
+            const audio = new Audio(selectSoundPath);
+            audio.volume = 1.0;
+            audio.preload = 'auto';
+            audio.play().catch(() => {
+                // Ignore failures before the page has fully granted audio playback permission.
+            });
         }
 
         function playClickSound() {
@@ -537,18 +524,23 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const osc = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
+            const filter = audioCtx.createBiquadFilter();
             
             const t = audioCtx.currentTime + 0.015;
             
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(400, t); 
-            osc.frequency.exponentialRampToValueAtTime(100, t + 0.1);
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(520, t);
+            osc.frequency.exponentialRampToValueAtTime(220, t + 0.08);
             
-            // Increased volume by 10x
-            gainNode.gain.setValueAtTime(4.0, t);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.1);
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1600, t);
+            filter.Q.setValueAtTime(6, t);
             
-            osc.connect(gainNode);
+            gainNode.gain.setValueAtTime(0.35, t);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+            
+            osc.connect(filter);
+            filter.connect(gainNode);
             gainNode.connect(audioCtx.destination);
             
             osc.start(t);

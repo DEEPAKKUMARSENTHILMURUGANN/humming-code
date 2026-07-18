@@ -51,12 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── 3. Page Flipping Logic ─────────────────────────────────────────
+    function initPageFlipAudio() {
+        const soundPath = 'Sound/page flip sound.mp3';
+
+        function playPageFlipSound() {
+            const audio = new Audio(soundPath);
+            audio.volume = 1.0;
+            audio.preload = 'auto';
+            audio.play().catch(() => {
+                // ignore play failures when not user-interacted yet
+            });
+        }
+
+        return playPageFlipSound;
+    }
+
+    const playPageFlipSound = initPageFlipAudio();
+
+    // ── 3. Page Flipping Logic ─────────────────────────────────────────────────────────
     window.flipPage = function(pageNumber, event) {
         if (event) event.stopPropagation();
         const page = document.getElementById(`page-${pageNumber}`);
         if (page) {
             page.classList.add('flipped');
+            playPageFlipSound();
             // Change z-index halfway through the animation (1000ms total) to prevent clipping
             setTimeout(() => {
                 page.style.zIndex = pageNumber;
@@ -74,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const page = document.getElementById(`page-${pageNumber}`);
         if (page) {
             page.classList.remove('flipped');
+            playPageFlipSound();
             setTimeout(() => {
                 page.style.zIndex = 5 - pageNumber; // Reset back to initial stacking (4 pages total)
                 if (pageNumber === 1) {

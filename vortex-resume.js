@@ -16,9 +16,11 @@ window.startVortexAnimation = function () {
 
     // Reset overlay UI
     overlay.classList.remove('hidden');
-    outputBtn.classList.add('hidden');
-    outputBtn.style.opacity = '0';
-    outputBtn.style.transform = 'translate(-50%, -50%) scale(0)';
+    if (outputBtn) {
+        outputBtn.classList.add('hidden');
+        outputBtn.style.opacity = '0';
+        outputBtn.style.transform = 'translate(-50%, -50%) scale(0)';
+    }
     progressEl.innerText = '0%';
     statusEl.innerText = 'INITIALIZING...';
     
@@ -37,7 +39,7 @@ window.startVortexAnimation = function () {
     let tick = 0;
     let phase = 'INIT'; // INIT -> SUCK -> COMPUTE -> DONE
     let overallProgress = 0; // 0 to 1
-    
+
     // Vortex state
     let vortexAngle = 0;
     let vortexSpeed = 0.02;
